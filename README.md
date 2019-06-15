@@ -1,2 +1,1 @@
-# project2
-name pending
+# project-setup
