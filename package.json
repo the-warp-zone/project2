@@ -11,7 +11,10 @@
     "seed": "node scripts/seedDB.js",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "test": "npm run lint && cross-env NODE_ENV=test mocha -u tdd --reporter spec --exit",
+    "lint": "eslint \"**/*.js\"",
+    "fix": "eslint --fix ."
   },
   "author": "",
   "license": "ISC",
@@ -25,9 +28,10 @@
     "nodemon": "^1.18.7"
   },
   "dependencies": {
+    "babel-eslint": "^10.0.1",
     "express": "^4.17.1",
+    "if-env": "^1.0.4",
     "mysql2": "^1.6.5",
-    "sequelize": "^5.8.9",
-    "if-env": "^1.0.4"
+    "sequelize": "^5.8.9"
   }
 }
