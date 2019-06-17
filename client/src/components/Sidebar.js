@@ -146,36 +146,36 @@ export default function MiniDrawer() {
         <Divider />
         <List>
           {// Where items are listed
-          [
-            "Activision",
-            "Electronic Arts",
-            "Ubisoft",
-            "Take Two Interactive"
-          ].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+            [
+              "Activision",
+              "Electronic Arts",
+              "Ubisoft",
+              "Take Two Interactive"
+            ].map((text, index) => (
+              <ListItem button key={text}>
+                <ListItemIcon>
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+            ))}
         </List>
         <Divider />
         <List>
           {// Where items are listed
-          ["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+            ["All mail", "Trash", "Spam"].map((text, index) => (
+              <ListItem button key={text}>
+                <ListItemIcon>
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+            ))}
         </List>
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Typography paragraph>We can put paragraphs into here</Typography>
+        <Typography paragraph align = "center">About Fast Travel Stocks</Typography>
         <Typography paragraph>
           You know, I think that R2 unit we bought might have been stolen. What
           makes you think that? Well, I stumbled across a recording while I was
