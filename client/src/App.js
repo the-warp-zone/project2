@@ -1,8 +1,14 @@
 import React from "react";
-import Form from "./components/Form";
+import Sidebar from "./components/Sidebar";
+import LandingPage from "./components/LandingPage";
 
 function App() {
-  return <Form />;
+  return (
+    <div>
+      <Sidebar />
+      {/* <LandingPage /> */}
+    </div>
+  );
 }
 
 export default App;
