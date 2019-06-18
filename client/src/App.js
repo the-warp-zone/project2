@@ -4,6 +4,7 @@ import Sidebar from "./components/Sidebar";
 import Chart from "./components/MainContentComponents/GraphComponents/Chart"
 
 
+
 class App extends Component {
     state = {
       data: {}
