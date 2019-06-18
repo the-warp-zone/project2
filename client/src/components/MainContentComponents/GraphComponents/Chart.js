@@ -7,7 +7,7 @@ class Chart extends Component {
 constructor(props){
     super(props);
     this.state = {
-        chartData: props.chartData
+        data: props.data
     }
 }
     static defaultProps = {
@@ -21,8 +21,9 @@ constructor(props){
         return(
             <div className="chart">
                 <Line 
-                    data={this.state.chartData}
+                    data={this.state.data}
                     options={{
+                        responsive: true,
                         title: {
                             display: this.props.displayTitle,
                             text: "Fast Travel Stocks: " + this.props.company,
@@ -31,6 +32,16 @@ constructor(props){
                         legend: {
                             display: this.props.displayLegend,
                             position: this.props.legendPosition
+                        },
+                        plugins: {
+                            zoom: {
+                                zoom: {
+                                    enabled: true,
+                                    drag: true,
+                                    mode: 'x',
+                                    speed: 0.05
+                                }
+                            }
                         }
                     }} />
             </div>
