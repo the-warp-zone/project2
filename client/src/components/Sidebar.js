@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
-    })
+    }),
   },
   appBarShift: {
     marginLeft: drawerWidth,
@@ -40,7 +40,7 @@ const useStyles = makeStyles(theme => ({
     })
   },
   menuButton: {
-    marginRight: 36
+    alignItems: "left"
   },
   hide: {
     display: "none"
@@ -72,8 +72,11 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-end",
-    padding: "0 8px",
     ...theme.mixins.toolbar
+  },
+  title: {
+    flexGrow: 1,
+    textAlign: "center"
   },
   content: {
     flexGrow: 1,
@@ -115,7 +118,7 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
+          <Typography variant="h6" className={classes.title}>
             Fast Travel Stocks
           </Typography>
         </Toolbar>
