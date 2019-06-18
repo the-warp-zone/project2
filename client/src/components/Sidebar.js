@@ -77,7 +77,7 @@ const useStyles = makeStyles(theme => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3)
+    padding: theme.spacing(10)
   }
 }));
 
@@ -160,35 +160,15 @@ export default function MiniDrawer() {
               </ListItem>
             ))}
         </List>
-        <Divider />
-        <List>
-          {// Where items are listed
-            ["All mail", "Trash", "Spam"].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
-        </List>
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Typography paragraph align = "center">About Fast Travel Stocks</Typography>
-        <Typography paragraph>
-          You know, I think that R2 unit we bought might have been stolen. What
-          makes you think that? Well, I stumbled across a recording while I was
-          cleaning him. He says he belongs to someone called Obi-Wan Kenobi. I
-          thought he might have meant old Ben. Do you know what he's talking
-          about? Well, I wonder if he's related to Ben. That old man's just a
-          crazy old wizard. Tomorrow I want you to take that R2 unit into
-          Anchorhead and have its memory flushed. That'll be the end of it. It
-          belongs to us now. But what if this Obi-Wan comes looking for him? He
-          won't, I don't think he exists any more. He died about the same time
-          as your father. He knew my father? I told you to forget it. Your only
-          concern is to prepare the new droids for tomorrow. In the morning I
-          want them on the south ridge working out those condensers.
+        <Typography paragraph align = "center" variant = "h1">About Fast Travel Stocks</Typography>
+        <Typography paragraph variant = "h4" align = "left">
+          Fast Travel Stock is an application that allows you to search up specific video game developers stocks, news, and games.
+        </Typography>
+        <Typography paragraph variant = "h4" align = "left">
+          You can get started by clicking on the list button located on the top left of the App. Then choose your company and look at those stocks!
         </Typography>
       </main>
     </div>
