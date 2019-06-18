@@ -17,7 +17,12 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
+import purple from "@material-ui/core/colors/purple";
+import grey from "@material-ui/core/colors/grey";
 
+const primary = purple[500];
+const secondary = grey[900];
+const yourmom = grey[50];
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -25,6 +30,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex"
   },
   appBar: {
+    backgroundColor: primary,
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
@@ -51,6 +57,8 @@ const useStyles = makeStyles(theme => ({
     whiteSpace: "nowrap"
   },
   drawerOpen: {
+    color: yourmom,
+    backgroundColor: secondary,
     width: drawerWidth,
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
@@ -58,6 +66,8 @@ const useStyles = makeStyles(theme => ({
     })
   },
   drawerClose: {
+    color: yourmom,
+    backgroundColor: secondary,
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
@@ -79,8 +89,10 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center"
   },
   content: {
+    color: yourmom,
+    backgroundColor: secondary,
     flexGrow: 1,
-    padding: theme.spacing(10)
+    padding: theme.spacing(18.7)
   }
 }));
 
@@ -171,7 +183,10 @@ export default function MiniDrawer() {
           Fast Travel Stock is an application that allows you to search up specific video game developers stocks, news, and games.
         </Typography>
         <Typography paragraph variant = "h4" align = "left">
-          You can get started by clicking on the list button located on the top left of the App. Then choose your company and look at those stocks!
+          You can get started by clicking on the icon of the company or by cliking the list icon to bring up the names of the publishers.
+        </Typography>
+        <Typography paragraph variant = "h4" align = "left">
+          Once you select your publisher, the stocks will be displayed with clickable buttons for news, games, and about the publisher.
         </Typography>
       </main>
     </div>
