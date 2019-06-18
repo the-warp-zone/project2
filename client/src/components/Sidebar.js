@@ -17,6 +17,8 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
+import Publisher from "./SideBarComponents/Publisher";
+import SvgIcon from "./SideBarComponents/SVGIcon";
 
 const drawerWidth = 240;
 
@@ -146,21 +148,24 @@ export default function MiniDrawer() {
         <Divider />
         <List>
           {// Where items are listed
-          [
-            "Activision",
-            "Electronic Arts",
-            "Ubisoft",
-            "Take Two Interactive"
-          ].map((text, index) => (
-            <ListItem button key={text}>
+          Publisher.map(company => (
+            <ListItem button key={company.name}>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                <SvgIcon data={company} />
+                {/* {index % 2 === 0 ? (
+                  <object
+                    type="image/svg+xml"
+                    data="./Assets/Images/EALogo.svg"
+                  />
+                ) : (
+                  <MailIcon />
+                )} */}
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={company.name} />
             </ListItem>
           ))}
         </List>
-        <Divider />
+        {/* <Divider />
         <List>
           {// Where items are listed
           ["All mail", "Trash", "Spam"].map((text, index) => (
@@ -171,7 +176,7 @@ export default function MiniDrawer() {
               <ListItemText primary={text} />
             </ListItem>
           ))}
-        </List>
+        </List> */}
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
