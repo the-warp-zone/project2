@@ -17,7 +17,12 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
+import purple from "@material-ui/core/colors/purple";
+import grey from "@material-ui/core/colors/grey";
 
+const primary = purple[500];
+const secondary = grey[900];
+const yourmom = grey[50];
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -25,11 +30,12 @@ const useStyles = makeStyles(theme => ({
     display: "flex"
   },
   appBar: {
+    backgroundColor: primary,
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
-    })
+    }),
   },
   appBarShift: {
     marginLeft: drawerWidth,
@@ -40,7 +46,7 @@ const useStyles = makeStyles(theme => ({
     })
   },
   menuButton: {
-    marginRight: 36
+    alignItems: "left"
   },
   hide: {
     display: "none"
@@ -51,6 +57,8 @@ const useStyles = makeStyles(theme => ({
     whiteSpace: "nowrap"
   },
   drawerOpen: {
+    color: yourmom,
+    backgroundColor: secondary,
     width: drawerWidth,
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
@@ -58,6 +66,8 @@ const useStyles = makeStyles(theme => ({
     })
   },
   drawerClose: {
+    color: yourmom,
+    backgroundColor: secondary,
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
@@ -72,12 +82,17 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-end",
-    padding: "0 8px",
     ...theme.mixins.toolbar
   },
-  content: {
+  title: {
     flexGrow: 1,
-    padding: theme.spacing(3)
+    textAlign: "center"
+  },
+  content: {
+    color: yourmom,
+    backgroundColor: secondary,
+    flexGrow: 1,
+    padding: theme.spacing(18.7)
   }
 }));
 
@@ -115,7 +130,7 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
+          <Typography variant="h6" className={classes.title}>
             Fast Travel Stocks
           </Typography>
         </Toolbar>
@@ -146,49 +161,32 @@ export default function MiniDrawer() {
         <Divider />
         <List>
           {// Where items are listed
-          [
-            "Activision",
-            "Electronic Arts",
-            "Ubisoft",
-            "Take Two Interactive"
-          ].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {// Where items are listed
-          ["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+            [
+              "Activision",
+              "Electronic Arts",
+              "Ubisoft",
+              "Take Two Interactive"
+            ].map((text, index) => (
+              <ListItem button key={text}>
+                <ListItemIcon>
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+            ))}
         </List>
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Typography paragraph>We can put paragraphs into here</Typography>
-        <Typography paragraph>
-          You know, I think that R2 unit we bought might have been stolen. What
-          makes you think that? Well, I stumbled across a recording while I was
-          cleaning him. He says he belongs to someone called Obi-Wan Kenobi. I
-          thought he might have meant old Ben. Do you know what he's talking
-          about? Well, I wonder if he's related to Ben. That old man's just a
-          crazy old wizard. Tomorrow I want you to take that R2 unit into
-          Anchorhead and have its memory flushed. That'll be the end of it. It
-          belongs to us now. But what if this Obi-Wan comes looking for him? He
-          won't, I don't think he exists any more. He died about the same time
-          as your father. He knew my father? I told you to forget it. Your only
-          concern is to prepare the new droids for tomorrow. In the morning I
-          want them on the south ridge working out those condensers.
+        <Typography paragraph align = "center" variant = "h1">About Fast Travel Stocks</Typography>
+        <Typography paragraph variant = "h4" align = "left">
+          Fast Travel Stock is an application that allows you to search up specific video game developers stocks, news, and games.
+        </Typography>
+        <Typography paragraph variant = "h4" align = "left">
+          You can get started by clicking on the icon of the company or by cliking the list icon to bring up the names of the publishers.
+        </Typography>
+        <Typography paragraph variant = "h4" align = "left">
+          Once you select your publisher, the stocks will be displayed with clickable buttons for news, games, and about the publisher.
         </Typography>
       </main>
     </div>
