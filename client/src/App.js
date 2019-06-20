@@ -8,12 +8,13 @@ class App extends Component {
 
 	render() {
 		return (
-		<div>
-      <Sidebar />
-      {/* <LandingPage /> */}
-			<Chart />
-			
-		</div>
+			<div>
+				<Sidebar />
+				{/* <LandingPage /> 
+				<Chart />
+				<News /> */}
+				<Games />
+			</div>
 		);
 	}
 }
