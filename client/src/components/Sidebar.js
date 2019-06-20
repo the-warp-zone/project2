@@ -22,9 +22,10 @@ import SvgIcon from "./SideBarComponents/SVGIcon";
 import purple from "@material-ui/core/colors/purple";
 import grey from "@material-ui/core/colors/grey";
 
-const primary = purple[500];
+const primary = purple[900];
 const secondary = grey[900];
-const yourmom = grey[50];
+const third = grey[50];
+const fourth = grey[200];
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -59,8 +60,7 @@ const useStyles = makeStyles(theme => ({
     whiteSpace: "nowrap"
   },
   drawerOpen: {
-    color: yourmom,
-    backgroundColor: secondary,
+    color: secondary,
     width: drawerWidth,
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
@@ -68,8 +68,7 @@ const useStyles = makeStyles(theme => ({
     })
   },
   drawerClose: {
-    color: yourmom,
-    backgroundColor: secondary,
+    color: secondary,
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
@@ -91,8 +90,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center"
   },
   content: {
-    color: yourmom,
-    backgroundColor: secondary,
+    backgroundColor: third,
     flexGrow: 1,
     padding: theme.spacing(18.7)
   }
