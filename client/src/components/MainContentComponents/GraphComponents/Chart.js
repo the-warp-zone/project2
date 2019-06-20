@@ -42,7 +42,8 @@ class Chart extends Component {
             interactivityEnabled: true,
             zoomEnabled:true,
             zoomType: "xy",
-            // width: 700,
+			// width: 600,
+			height: 600,
             //backgroundColor: "#F5DEB3"
 			theme: "light1", // "light1","light2", "dark1", "dark2"
 			title:{

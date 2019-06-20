@@ -10,8 +10,8 @@ class App extends Component {
 		return (
 		<div>
       <Sidebar />
-      <LandingPage />
-			{/* <Chart /> */}
+      {/* <LandingPage /> */}
+			<Chart />
 			
 		</div>
 		);
