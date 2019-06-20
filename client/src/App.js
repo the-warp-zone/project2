@@ -1,7 +1,9 @@
 import React, {Component} from "react";
 import Sidebar from "./components/Sidebar";
 import LandingPage from "./components/LandingPage";
-import Chart from "./components/MainContentComponents/GraphComponents/Chart"
+import Chart from "./components/MainContentComponents/GraphComponents/Chart";
+import News from "./components/MainContentComponents/NewsComponents/NewsCompMain";
+import Games from "./components/MainContentComponents/GamesComponents/GameCompMain";
 
  
 class App extends Component {
