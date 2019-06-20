@@ -84,7 +84,6 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-end",
-    padding: "0 8px",
     ...theme.mixins.toolbar
   },
   title: {
