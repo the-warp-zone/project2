@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import "./chart.css";
 import CanvasJSReact from '../../../canvasjs.react';
 import axios from 'axios';
-
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 
