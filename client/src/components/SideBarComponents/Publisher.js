@@ -6,7 +6,7 @@ var Publisher = [
   },
   {
     id: 2,
-    img: "Assets/Images/Nintendo.svg",
+    img: "Assets/Images/Nintendo64.svg",
     name: "Nintendo"
   },
   {
