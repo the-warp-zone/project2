@@ -17,6 +17,8 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
+import Publisher from "./SideBarComponents/Publisher";
+import SvgIcon from "./SideBarComponents/SVGIcon";
 import purple from "@material-ui/core/colors/purple";
 import grey from "@material-ui/core/colors/grey";
 
@@ -36,7 +38,7 @@ const useStyles = makeStyles(theme => ({
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
-    }),
+    })
   },
   appBarShift: {
     marginLeft: drawerWidth,
@@ -159,32 +161,52 @@ export default function MiniDrawer() {
         <Divider />
         <List>
           {// Where items are listed
-            [
-              "Activision",
-              "Electronic Arts",
-              "Ubisoft",
-              "Take Two Interactive"
-            ].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
+          Publisher.map(company => (
+            <ListItem button key={company.name}>
+              <ListItemIcon>
+                <SvgIcon data={company} />
+                {/* {index % 2 === 0 ? (
+                  <object
+                    type="image/svg+xml"
+                    data="./Assets/Images/EALogo.svg"
+                  />
+                ) : (
+                  <MailIcon />
+                )} */}
+              </ListItemIcon>
+              <ListItemText primary={company.name} />
+            </ListItem>
+          ))}
         </List>
+        {/* <Divider />
+        <List>
+          {// Where items are listed
+          ["All mail", "Trash", "Spam"].map((text, index) => (
+            <ListItem button key={text}>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
+        </List> */}
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Typography paragraph align = "center" variant = "h1">About Fast Travel Stocks</Typography>
-        <Typography paragraph variant = "h4" align = "left">
-          Fast Travel Stock is an application that allows you to search up specific video game developers stocks, news, and games.
+        <Typography paragraph align="center" variant="h1">
+          About Fast Travel Stocks
         </Typography>
-        <Typography paragraph variant = "h4" align = "left">
-          You can get started by clicking on the icon of the company or by cliking the list icon to bring up the names of the publishers.
+        <Typography paragraph variant="h4" align="left">
+          Fast Travel Stock is an application that allows you to search up
+          specific video game developers stocks, news, and games.
         </Typography>
-        <Typography paragraph variant = "h4" align = "left">
-          Once you select your publisher, the stocks will be displayed with clickable buttons for news, games, and about the publisher.
+        <Typography paragraph variant="h4" align="left">
+          You can get started by clicking on the icon of the company or by
+          cliking the list icon to bring up the names of the publishers.
+        </Typography>
+        <Typography paragraph variant="h4" align="left">
+          Once you select your publisher, the stocks will be displayed with
+          clickable buttons for news, games, and about the publisher.
         </Typography>
       </main>
     </div>
