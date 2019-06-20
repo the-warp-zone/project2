@@ -17,8 +17,8 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
-import Publisher from "./SideBarComponents/Publisher";
-import SvgIcon from "./SideBarComponents/SVGIcon";
+import Publisher from "../SideBarComponents/Publisher";
+import SvgIcon from "../SideBarComponents/SVGIcon";
 import purple from "@material-ui/core/colors/purple";
 import grey from "@material-ui/core/colors/grey";
 
