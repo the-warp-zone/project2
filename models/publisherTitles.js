@@ -4,8 +4,8 @@
 // and a devoured attribute that is false by default
 
 module.exports = function(sequelize, DataTypes) {
-  var Burger = sequelize.define("Burger", {
-    burger_name: {
+  var Titles = sequelize.define("titles", {
+    publisher_titles_name: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -16,9 +16,9 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        Burger.hasOne(models.Customer);
+        Titles.hasOne(models.Title);
       }
     }
   });
-  return Burger;
+  return Titles;
 };

@@ -8,7 +8,10 @@ class Games extends Component {
 		return (
 		<div>
             {/* {conditional if button is pressed load either small or large}  */}
-            <GameLarge />
+           <div className="gamesLarge">
+               <GameLarge />
+            </div>
+            
       
 			<GameSmall />
 			
