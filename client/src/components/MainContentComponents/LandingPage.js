@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+// import { makeStyles, useTheme } from "@material-ui/core/styles";
 import "./landingPage.css"
 
 class LandingPage extends Component{
