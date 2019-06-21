@@ -38,5 +38,14 @@
     "mysql2": "^1.6.5",
     "react-chartjs-2": "^2.7.6",
     "sequelize": "^5.8.9"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/the-warp-zone/FastTravelStocks.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/the-warp-zone/FastTravelStocks/issues"
+  },
+  "homepage": "https://github.com/the-warp-zone/FastTravelStocks#readme"
 }
