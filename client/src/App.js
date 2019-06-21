@@ -4,7 +4,7 @@ import LandingPage from "./components/MainContentComponents/LandingPage";
 import Chart from "./components/MainContentComponents/GraphComponents/Chart";
 import News from "./components/MainContentComponents/NewsComponents/NewsCompMain";
 import Games from "./components/MainContentComponents/GamesComponents/GameCompMain";
-
+import GameListItem from "./components/MainContentComponents/GamesComponents/GameListItem";
  
 class App extends Component {
 
