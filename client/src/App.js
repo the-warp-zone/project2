@@ -5,17 +5,21 @@ import Chart from "./components/MainContentComponents/GraphComponents/Chart";
 import News from "./components/MainContentComponents/NewsComponents/NewsCompMain";
 import Games from "./components/MainContentComponents/GamesComponents/GameCompMain";
 import GameListItem from "./components/MainContentComponents/GamesComponents/GameListItem";
+
+import LargeCard from "./components/MainContentComponents/GamesComponents/LargeCard";
  
 class App extends Component {
 
 	render() {
 		return (
 			<div>
-				<Sidebar />
+				<Sidebar /> 
 				{/* <LandingPage /> 
 				<Chart />
 				<News /> */}
-				<Games />
+				{/* <Games /> */}
+				{/* <GameLargeCard /> */}
+				<LargeCard />
 			</div>
 		);
 	}

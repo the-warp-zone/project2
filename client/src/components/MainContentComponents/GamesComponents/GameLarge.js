@@ -56,16 +56,14 @@ class GameLarge extends Component {
       });
   }
   render() {
-      console.log(this.state.gamesList);
+      //console.log(this.state.gamesList);
     // Placing all of this below into it's own component so that it's not messing with the state..?
-    const gameItem = this.state.gamesList.map(item => (
-    <GameListItem date={item[0]} title={item[1]}/>
-    ));
+    // const gameItem = this.state.gamesList.map(item => (
+    // <GameListItem date={item[0]} title={item[1]}/>
+    // ));
     return (
       <div>
-        <ul>
-            {gameItem}
-        </ul>
+        {/* <LargeCard data={this.state.gamesList}/> */}
       </div>
     );
   }
