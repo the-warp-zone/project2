@@ -7,9 +7,9 @@ class News extends Component {
     return (
       <div>
         {/* {conditional if button is pressed load either small or large}  */}
-        <NewsLarge />
+        {/* <NewsLarge /> */}
 
-        {/* <NewsSmall /> */}
+        <NewsSmall />
       </div>
     );
   }
