@@ -143,7 +143,7 @@ const ReactVirtualizedTable = ({data}) => {
 
 
   return (
-    <Paper style={{ height: 400, width: '20%', float: "right", margin: '15%' }}>
+    <Paper style={{ height: 600, width: '20%', float: "right", margin: '15%' }}>
       <VirtualizedTable
         rowCount={rows.length}
         rowGetter={({ index }) => rows[index]}
