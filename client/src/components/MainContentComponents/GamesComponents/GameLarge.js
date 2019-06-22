@@ -48,7 +48,7 @@ class GameLarge extends Component {
           (a, b) =>
             new moment(b[0], "MMM DD YYYY") - new moment(a[0], "MMM DD YYYY")
         );
-        console.log(gamesList);
+        //console.log(gamesList);
 
         this.setState({ gamesList });
       })

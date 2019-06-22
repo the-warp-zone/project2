@@ -5,9 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
 import Paper from '@material-ui/core/Paper';
 import { AutoSizer, Column, Table } from 'react-virtualized';
-import axios from "axios";
-import GameLarge from "./GameLarge";
-import moment from "moment";
+
 
 const styles = theme => ({
   flexContainer: {
@@ -32,16 +30,9 @@ const styles = theme => ({
 });
 
 class MuiVirtualizedTable extends React.PureComponent  {
-  constructor(props){
-    super(props)
-    this.state = {
-      data: this.props.data
-    }
-  }
   static defaultProps = {
     headerHeight: 48,
-    rowHeight: 48,
-    data: this.props.data
+    rowHeight: 48
   };
   
   getRowClassName = ({ index }) => {
@@ -86,6 +77,7 @@ class MuiVirtualizedTable extends React.PureComponent  {
   };
   
   render() {
+    
     const { classes, columns, ...tableProps } = this.props;
     return (
       <AutoSizer>
@@ -127,21 +119,29 @@ const VirtualizedTable = withStyles(styles)(MuiVirtualizedTable);
 
 // ---DATA HERE FROM GAMELARGE.js-----
 
-const gameList = [this.state.data];
-console.log(this.state);
-console.log(gameList);
 
-function createData(id, date, title) {
-  return { id, date, title};
-}
 
-const rows = [];
 
-for (let i = 0; i < gameList.length; i += 1) {
-  rows.push(createData(i, gameList[i][0], gameList[i][1]));
-}
+//const gameList = this.getData();
 
-export default function ReactVirtualizedTable() {
+//console.log(gameList);
+
+
+
+const ReactVirtualizedTable = ({data}) => {
+  const gameList = data;
+  function createData(id, date, title) {
+    return { id, date, title};
+  }
+  
+  const rows = [];
+  
+  for (let i = 0; i < gameList.length; i += 1) {
+    rows.push(createData(i, gameList[i][0], gameList[i][1]));
+  }
+  
+
+
   return (
     <Paper style={{ height: 400, width: '20%', float: "right", margin: '15%' }}>
       <VirtualizedTable
@@ -163,3 +163,4 @@ export default function ReactVirtualizedTable() {
     </Paper>
   );
 }
+export default ReactVirtualizedTable;
