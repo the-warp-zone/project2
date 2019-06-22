@@ -9,6 +9,7 @@ import NewsList from "./components/MainContentComponents/NewsComponents/NewsList
 import GameLarge from "./components/MainContentComponents/GamesComponents/GameLarge";
 import LargeCard from "./components/MainContentComponents/GamesComponents/LargeCard";
 import GameCardSmall from "./components/MainContentComponents/GamesComponents/GameSmall";
+import Ticker from "./components/MainContentComponents/Tickercomponents/TickerMain";
 
 class App extends Component {
   render() {
@@ -16,8 +17,9 @@ class App extends Component {
       <div>
         <Sidebar />
         {/* <LandingPage />  */}
+        <Ticker />
         {/* <Chart /> */}
-        <News />
+        {/* <News /> */}
         {/* <Games /> */}
         {/* <GameLargeCard /> */}
         {/* <GameLarge />
