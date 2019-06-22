@@ -15,9 +15,9 @@ class App extends Component {
 		return (
 			<div>
 				<Sidebar /> 
-				{/* <LandingPage /> 
+				{/* <LandingPage />  */}
 				<Chart />
-				<News /> */}
+				{/* <News /> */}
 				{/* <Games /> */}
 				{/* <GameLargeCard /> */}
 				<GameLarge />

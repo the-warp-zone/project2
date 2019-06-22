@@ -2,16 +2,19 @@ import React, { Component } from "react";
 import "./chart.css";
 import CanvasJSReact from "../../../canvasjs.react";
 import axios from "axios";
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 class Chart extends Component {
   state = {
     dataPoints: []
   };
+  
   componentDidMount() {
     axios({
       url:
-        "https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&apikey=6J7PBJ5E6ZV76KME&symbol=UBSFY"
+        "https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&apikey=6J7PBJ5E6ZV76KME&symbol=NTDOY"
     }).then(response => {
       //const dataPoints = response.data['Weekly Time Series'];
       // let responseKeys = Object.keys(response.data['Weekly Time Series'])
@@ -32,7 +35,13 @@ class Chart extends Component {
       this.setState({ dataPoints });
     });
   }
+   
+  
+   
+ 
+
   render() {
+    
     const options = {
       animationEnabled: true,
       exportEnabled: true,
@@ -66,9 +75,17 @@ class Chart extends Component {
     };
 
     return (
-      <div className="chart">
+      <div>
+      <Paper style={{ 
+      height: 600,
+      width: "20%", 
+      // background: 'linear-gradient(45deg, #0a9df1, #62058d)', 
+      float: "right", 
+      marginTop: "8%", 
+      marginRight: "25%" }}>
         <CanvasJSChart options={options} />
-      </div>
+      </Paper>
+    </div>
     );
   }
 }
