@@ -16,7 +16,9 @@ const useStyles = makeStyles(theme => ({
     maxWidth: 360,
     backgroundColor: theme.palette.background.paper,
     float: "right",
-    margin: 0
+    margin: 0,
+    overflowY: "scroll",
+    maxHeight: 500
   },
   inline: {
     display: "inline"
@@ -40,6 +42,8 @@ const NewsList = props => {
   const newsItem = props.data.map(item => (
     <NewsListItem key={id++} data={item} />
   ));
+
+  console.log(props.data);
 
   return (
     <List className={classes.root}>{newsItem}</List>

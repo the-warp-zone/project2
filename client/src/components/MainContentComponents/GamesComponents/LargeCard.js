@@ -5,7 +5,8 @@ import { withStyles } from "@material-ui/core/styles";
 import TableCell from "@material-ui/core/TableCell";
 import Paper from "@material-ui/core/Paper";
 import { AutoSizer, Column, Table } from "react-virtualized";
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
+import Iframe from "react-iframe";
 
 const styles = theme => ({
   flexContainer: {
@@ -13,7 +14,7 @@ const styles = theme => ({
     alignItems: "center",
     boxSizing: "border-box"
   },
-  margin:{
+  margin: {
     margin: theme.spacing(1)
   },
   tableRow: {
@@ -51,7 +52,6 @@ class MuiVirtualizedTable extends React.PureComponent {
     const { columns, classes, rowHeight, onRowClick } = this.props;
     return (
       <TableCell
-    
         component="div"
         className={clsx(classes.tableCell, classes.flexContainer, {
           [classes.noClick]: onRowClick == null
@@ -66,7 +66,6 @@ class MuiVirtualizedTable extends React.PureComponent {
       >
         {cellData}
       </TableCell>
-      
     );
   };
 
@@ -74,7 +73,6 @@ class MuiVirtualizedTable extends React.PureComponent {
     const { headerHeight, columns, classes } = this.props;
 
     return (
-      
       <TableCell
         component="div"
         className={clsx(
@@ -86,7 +84,6 @@ class MuiVirtualizedTable extends React.PureComponent {
         style={{ height: headerHeight }}
         align={columns[columnIndex].numeric || false ? "right" : "left"}
       >
-        
         <span>{label}</span>
       </TableCell>
     );
@@ -95,12 +92,9 @@ class MuiVirtualizedTable extends React.PureComponent {
   render() {
     const { classes, columns, ...tableProps } = this.props;
     return (
-      <AutoSizer >
-        
+      <AutoSizer>
         {({ height, width }) => (
-          
-        <Table
-
+          <Table
             height={height}
             width={width}
             {...tableProps}
@@ -108,9 +102,7 @@ class MuiVirtualizedTable extends React.PureComponent {
           >
             {columns.map(({ dataKey, ...other }, index) => {
               return (
-                
                 <Column
-                
                   key={dataKey}
                   headerRenderer={headerProps =>
                     this.headerRenderer({
@@ -126,10 +118,8 @@ class MuiVirtualizedTable extends React.PureComponent {
               );
             })}
           </Table>
-          )}
-          
+        )}
       </AutoSizer>
-      
     );
   }
 }
@@ -142,11 +132,9 @@ MuiVirtualizedTable.propTypes = {
   rowHeight: PropTypes.number
 };
 
-
 const VirtualizedTable = withStyles(styles)(MuiVirtualizedTable);
 
 const ReactVirtualizedTable = ({ data }) => {
-  
   const gameList = data;
   function createData(id, date, title) {
     return { id, date, title };
@@ -161,21 +149,22 @@ const ReactVirtualizedTable = ({ data }) => {
     marginRight: "1%",
     marginTop: "1%",
     float: "right",
-    background: 'linear-gradient(45deg, #0a9df1 , #62058d )',
+    background: "linear-gradient(45deg, #0a9df1 , #62058d )",
     color: "white"
-  }
+  };
   return (
-    
-    <Paper style={{ 
-      height: 800,
-      width: "20%", 
-      // background: 'linear-gradient(45deg, #0a9df1, #62058d)', 
-      float: "right", 
-      marginTop: "8%", 
-      marginRight: "25%" }}>
+    <Paper
+      style={{
+        height: 800,
+        width: "20%",
+        // background: 'linear-gradient(45deg, #0a9df1, #62058d)',
+        float: "right",
+        marginTop: "8%",
+        marginRight: "25%"
+      }}
+    >
       <VirtualizedTable
         rowCount={rows.length}
-        
         rowGetter={({ index }) => rows[index]}
         columns={[
           {
@@ -191,8 +180,8 @@ const ReactVirtualizedTable = ({ data }) => {
         ]}
       />
       <Button variant="contained" size="small" color="third" style={bStyle}>
-          Close
-        </Button>
+        Close
+      </Button>
     </Paper>
   );
 };
