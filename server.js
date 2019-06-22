@@ -3,6 +3,7 @@ const routes = require("./controllers");
 const app = express();
 const PORT = process.env.PORT || 3001;
 var db = require("./models");
+var path = require('path');
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -13,6 +14,7 @@ if (process.env.NODE_ENV === "production") {
 }
 // Add routes, both API and view
 app.use(routes);
+app.use('/public', express.static(path.join(__dirname, '../public')));
 
 // Start the API server
 // ADD SEQUELIZE HERE TO CONNECT TO YOUR DB
