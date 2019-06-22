@@ -5,6 +5,7 @@ import Chart from "./components/MainContentComponents/GraphComponents/Chart";
 import News from "./components/MainContentComponents/NewsComponents/NewsCompMain";
 import Games from "./components/MainContentComponents/GamesComponents/GameCompMain";
 import GameListItem from "./components/MainContentComponents/GamesComponents/GameListItem";
+import NewsList from "./components/MainContentComponents/NewsComponents/NewsList";
  
 class App extends Component {
 
@@ -13,9 +14,9 @@ class App extends Component {
 			<div>
 				<Sidebar />
 				{/* <LandingPage /> 
-				<Chart />
-				<News /> */}
-				<Games />
+				<Chart /> */}
+				<News />
+				{/* <Games /> */}
 			</div>
 		);
 	}
