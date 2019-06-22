@@ -5,9 +5,11 @@ import Chart from "./components/MainContentComponents/GraphComponents/Chart";
 import News from "./components/MainContentComponents/NewsComponents/NewsCompMain";
 import Games from "./components/MainContentComponents/GamesComponents/GameCompMain";
 import GameListItem from "./components/MainContentComponents/GamesComponents/GameListItem";
+import NewsList from "./components/MainContentComponents/NewsComponents/NewsList";
 import GameLarge from "./components/MainContentComponents/GamesComponents/GameLarge";
 import LargeCard from "./components/MainContentComponents/GamesComponents/LargeCard";
 import GameCardSmall from "./components/MainContentComponents/GamesComponents/GameSmall";
+
  
 class App extends Component {
 

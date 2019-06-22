@@ -46,5 +46,14 @@
     "react-iframe": "^1.8.0",
     "react-virtualized": "^9.21.1",
     "sequelize": "^5.8.9"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/the-warp-zone/FastTravelStocks.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/the-warp-zone/FastTravelStocks/issues"
+  },
+  "homepage": "https://github.com/the-warp-zone/FastTravelStocks#readme"
 }
