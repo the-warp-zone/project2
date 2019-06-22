@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Sidebar from "./components/MainContentComponents/Sidebar";
 import LandingPage from "./components/MainContentComponents/LandingPage";
 import Chart from "./components/MainContentComponents/GraphComponents/Chart";
@@ -10,22 +10,20 @@ import GameLarge from "./components/MainContentComponents/GamesComponents/GameLa
 import LargeCard from "./components/MainContentComponents/GamesComponents/LargeCard";
 import GameCardSmall from "./components/MainContentComponents/GamesComponents/GameSmall";
 
- 
 class App extends Component {
-
-	render() {
-		return (
-			<div>
-				<Sidebar /> 
-				{/* <LandingPage />  */}
-				{/* <Chart /> */}
-				{/* <News /> */}
-				{/* <Games /> */}
-				{/* <GameLargeCard /> */}
-				<GameLarge />
-				<GameCardSmall />
-			</div>
-		);
-	}
+  render() {
+    return (
+      <div>
+        <Sidebar />
+        {/* <LandingPage />  */}
+        {/* <Chart /> */}
+        <News />
+        {/* <Games /> */}
+        {/* <GameLargeCard /> */}
+        {/* <GameLarge />
+				<GameCardSmall /> */}
+      </div>
+    );
+  }
 }
-export default App;        
+export default App;
