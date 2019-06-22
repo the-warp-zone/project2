@@ -5,6 +5,7 @@ import Chart from "./components/MainContentComponents/GraphComponents/Chart";
 import News from "./components/MainContentComponents/NewsComponents/NewsCompMain";
 import Games from "./components/MainContentComponents/GamesComponents/GameCompMain";
 import GameListItem from "./components/MainContentComponents/GamesComponents/GameListItem";
+import GameLarge from "./components/MainContentComponents/GamesComponents/GameLarge";
 
 import LargeCard from "./components/MainContentComponents/GamesComponents/LargeCard";
  
@@ -19,7 +20,7 @@ class App extends Component {
 				<News /> */}
 				{/* <Games /> */}
 				{/* <GameLargeCard /> */}
-				<LargeCard />
+				<GameLarge />
 			</div>
 		);
 	}
