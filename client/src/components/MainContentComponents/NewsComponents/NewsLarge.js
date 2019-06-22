@@ -6,7 +6,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import { Grid, AppBar, Toolbar, Typography } from "@material-ui/core";
 import "./news.css";
-import InfiniteScroll from "react-infinite-scroll-component";
 import Button from "@material-ui/core/Button";
 
 class NewsLarge extends Component {
