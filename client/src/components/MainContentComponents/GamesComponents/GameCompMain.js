@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import GameSmall from "./GameSmall";
 import GameLarge from "./GameLarge";
+import GameCardSmall from "./GameSmall";
  
 class Games extends Component {
 
@@ -8,13 +9,11 @@ class Games extends Component {
 		return (
 		<div>
             {/* {conditional if button is pressed load either small or large}  */}
-           <div className="gamesLarge">
+           <div>
                <GameLarge />
+
+			   <GameCardSmall />
             </div>
-            
-      
-			<GameSmall />
-			
 		</div>
 		);
 	}

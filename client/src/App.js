@@ -16,7 +16,7 @@ class App extends Component {
 			<div>
 				<Sidebar /> 
 				{/* <LandingPage />  */}
-				<Chart />
+				{/* <Chart /> */}
 				{/* <News /> */}
 				{/* <Games /> */}
 				{/* <GameLargeCard /> */}

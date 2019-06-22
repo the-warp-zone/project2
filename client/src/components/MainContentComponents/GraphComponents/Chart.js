@@ -36,10 +36,6 @@ class Chart extends Component {
     });
   }
    
-  
-   
- 
-
   render() {
     
     const options = {
@@ -78,7 +74,8 @@ class Chart extends Component {
       <div>
       <Paper style={{ 
       height: 600,
-      width: "20%", 
+      width: "20%",
+      borderRadius: "0.5rem",
       // background: 'linear-gradient(45deg, #0a9df1, #62058d)', 
       float: "right", 
       marginTop: "8%", 
