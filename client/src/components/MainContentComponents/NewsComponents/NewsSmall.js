@@ -1,63 +1,53 @@
-// import React, { Component } from "react";
-// import axios from "axios";
-// import moment from "moment";
-// import NewsList from "./NewsList";
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import NintendoPicNews from "../../../../src/src_images/nintendo_news.jpg";
+import "./news.css";
 
-// class NewsSmall extends Component {
-//   state = {
-//     newsList: []
-//   };
-//   componentDidMount() {
-//     axios({
-//       url:
-//         "https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/NewsSearchAPI?autoCorrect=true&pageNumber=1&pageSize=10&q=Activision&safeSearch=false",
-//       headers: {
-//         "X-RapidAPI-Host": "contextualwebsearch-websearch-v1.p.rapidapi.com",
-//         "X-RapidAPI-Key": "32a10d7338mshd41fd36d30be39cp1eec1ejsnd23f7aebd654"
-//       }
-//     })
-//       .then(response => {
-//         console.log(response.data);
+const useStyles = makeStyles({
+  card: {
+    maxWidth: 345,
+    marginTop: "8%",
+    marginLeft: "40%",
+    width: "300px"
+  },
+  media: {
+    height: 140
+  }
+});
 
-//         let titles = this.getTitles(response.data.value);
-//         let descriptions = this.getDescriptions(response.data.value);
-//         let mixed = this.getFinalList(titles, descriptions);
+const GameCardSmall = () => {
+  const classes = useStyles();
 
-//         this.setState({ newsList: mixed });
-//       })
-//       .catch(err => {
-//         console.error(err);
-//       });
-//   }
-
-//   getFinalList(titles, descriptions) {
-//     let a = [];
-//     for (let i = 0; i < titles.length; i++) {
-//       a.push([titles[i], descriptions[i]]);
-//     }
-//     return a;
-//   }
-
-//   getTitles(articles) {
-//     let a = [];
-//     for (let i = 0; i < articles.length; i++) {
-//       a.push(articles[i].title.replace(/<b>/g, "").replace(/<\/b>/g, ""));
-//     }
-//     return a;
-//   }
-
-//   getDescriptions(articles) {
-//     let a = [];
-//     for (let i = 0; i < articles.length; i++) {
-//       a.push(articles[i].description.replace(/<b>/g, "").replace(/<\/b>/g, ""));
-//     }
-//     return a;
-//   }
-//   render() {
-//     const newsItem = this.state.newsList.map(item => (
-//       <NewsList title={item[0]} description={item[1]} />
-//     ));
-//     return <ul>{newsItem}</ul>;
-//   }
-// }
-// export default NewsSmall;
+  return (
+    <Card className={classes.card}>
+      <CardActionArea>
+        <CardMedia
+          className={classes.media}
+          image={NintendoPicNews}
+          title="Nintendo News Picture"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+            "Nintendo" News
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Checkout a recent news about "Nintendo"
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Button size="small" color="primary">
+          See List
+        </Button>
+      </CardActions>
+    </Card>
+  );
+};
+export default GameCardSmall;
