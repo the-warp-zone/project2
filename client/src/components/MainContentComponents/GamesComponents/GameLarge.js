@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import axios from "axios";
 import moment from "moment";
 import GameListItem from "./GameListItem";
-
+import LargeCard from "./LargeCard"
 class GameLarge extends Component {
   state = {
     gamesList: []
   };
+
   componentDidMount() {
     axios({
       url:
@@ -47,25 +48,26 @@ class GameLarge extends Component {
           (a, b) =>
             new moment(b[0], "MMM DD YYYY") - new moment(a[0], "MMM DD YYYY")
         );
-        console.log(gamesList);
+        //console.log(gamesList);
 
         this.setState({ gamesList });
       })
       .catch(err => {
         console.error(err);
       });
+      
   }
+  
   render() {
-      console.log(this.state.gamesList);
+    
+    console.log(this.state.gamesList);
     // Placing all of this below into it's own component so that it's not messing with the state..?
-    const gameItem = this.state.gamesList.map(item => (
-    <GameListItem date={item[0]} title={item[1]}/>
-    ));
+    // const gameItem = this.state.gamesList.map(item => (
+    // <GameListItem date={item[0]} title={item[1]}/>
+    // ));
     return (
       <div>
-        <ul>
-            {gameItem}
-        </ul>
+        <LargeCard data={this.state.gamesList}/>
       </div>
     );
   }
