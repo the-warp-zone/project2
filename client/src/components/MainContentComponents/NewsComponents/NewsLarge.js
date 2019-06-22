@@ -4,6 +4,10 @@ import moment from "moment";
 import NewsList from "./NewsList";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
+import { Grid, AppBar, Toolbar, Typography } from "@material-ui/core";
+import "./news.css";
+import InfiniteScroll from "react-infinite-scroll-component";
+import Button from "@material-ui/core/Button";
 
 class NewsLarge extends Component {
   state = {
@@ -55,8 +59,20 @@ class NewsLarge extends Component {
     }
     return a;
   }
+
   render() {
-    return <NewsList data={this.state.newsList} />;
+    const bStyle = {
+      marginRight: "1%",
+      marginTop: "17%",
+      float: "right",
+      background: "linear-gradient(45deg, #0a9df1 , #62058d )",
+      color: "white"
+    };
+    return (
+      <div>
+        <NewsList data={this.state.newsList} />
+      </div>
+    );
   }
 }
 export default NewsLarge;
