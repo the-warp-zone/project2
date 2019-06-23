@@ -6,6 +6,7 @@ import axios from "axios";
 import "./ticker.css";
 
 
+
 class TickerComp extends Component {
   state = {
       Nintendo: "",
@@ -16,19 +17,21 @@ class TickerComp extends Component {
     
   };
   componentDidMount() {
+    
     axios({
       url:
         "https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&apikey=6J7PBJ5E6ZV76KME&symbol=NTDOY"
     }).then(response => {
       
+      
       let obj = response.data["Weekly Time Series"];
       let dateObj = Object.keys(obj);
       let todaysDateKey = dateObj[0];
       let todaysPrice = response.data["Weekly Time Series"][todaysDateKey];
-      let tcpNTDOY = todaysPrice['4. close'];
+      let todaysClosingPrice = todaysPrice['4. close'];
      
-      console.log("Nintendo $" + tcpNTDOY)
-      this.setState({Nintendo: tcpNTDOY});
+      console.log("Nintendo $" + todaysClosingPrice)
+      this.setState({Nintendo: todaysClosingPrice});
     });
     axios({
       url:
@@ -39,10 +42,10 @@ class TickerComp extends Component {
       let dateObj = Object.keys(obj);
       let todaysDateKey = dateObj[0];
       let todaysPrice = response.data["Weekly Time Series"][todaysDateKey];
-      let tcpATVI = todaysPrice['4. close']
+      let todaysClosingPrice = todaysPrice['4. close']
      
-      console.log("Activision $" + tcpATVI)
-      this.setState({Activision: tcpATVI});
+      console.log("Activision $" + todaysClosingPrice)
+      this.setState({Activision: todaysClosingPrice});
     });
     axios({
       url:
@@ -53,10 +56,10 @@ class TickerComp extends Component {
       let dateObj = Object.keys(obj);
       let todaysDateKey = dateObj[0];
       let todaysPrice = response.data["Weekly Time Series"][todaysDateKey];
-      let tcpEA = todaysPrice['4. close']
+      let todaysClosingPrice = todaysPrice['4. close']
      
-      console.log("EA $" + tcpEA)
-      this.setState({EA: tcpEA});
+      console.log("EA $" + todaysClosingPrice)
+      this.setState({EA: todaysClosingPrice});
     });
     axios({
       url:
@@ -67,10 +70,10 @@ class TickerComp extends Component {
       let dateObj = Object.keys(obj);
       let todaysDateKey = dateObj[0];
       let todaysPrice = response.data["Weekly Time Series"][todaysDateKey];
-      let tcpTTWO = todaysPrice['4. close']
+      let todaysClosingPrice = todaysPrice['4. close']
      
-      console.log("TAKE2 $" + tcpTTWO)
-      this.setState({TakeTwo: tcpTTWO});
+      console.log("TAKE2 $" + todaysClosingPrice)
+      this.setState({TakeTwo: todaysClosingPrice});
     });
     axios({
       url:
@@ -81,10 +84,10 @@ class TickerComp extends Component {
       let dateObj = Object.keys(obj);
       let todaysDateKey = dateObj[0];
       let todaysPrice = response.data["Weekly Time Series"][todaysDateKey];
-      let tcpSNE = todaysPrice['4. close']
+      let todaysClosingPrice = todaysPrice['4. close']
      
-      console.log("Sony $" + tcpSNE)
-      this.setState({Sony: tcpSNE});
+      console.log("Sony $" + todaysClosingPrice)
+      this.setState({Sony: todaysClosingPrice});
 });
    }
    render(){
@@ -93,11 +96,11 @@ class TickerComp extends Component {
       <Paper style={{
         padding: 10,
         }}>
-        <Typography variant="h5" component="h5" style={{textAlign:"center"}}>
-          Nintendo(NTDOY): ${this.state.Nintendo} | Activision(ATVI): ${this.state.Activision} | Electronic Arts(EA): ${this.state.EA}
+        <Typography variant="h6" component="h6" style={{textAlign:"center"}}>
+          Nintendo(NTDOY): ${this.state.Nintendo} || Activision(ATVI): ${this.state.Activision} || Electronic Arts(EA): ${this.state.EA}
         </Typography>
-        <Typography variant="h5" component="h5" style={{textAlign:"center"}}>
-          Take Two Interactive(TTWO): ${this.state.TakeTwo} | Sony Interactive Entertainment(SNE): ${this.state.Sony}
+        <Typography variant="h6" component="h6" style={{textAlign:"center"}}>
+          Take Two Interactive(TTWO): ${this.state.TakeTwo} || Sony Interactive Entertainment(SNE): ${this.state.Sony}
         </Typography>
       </Paper>
     </div>
