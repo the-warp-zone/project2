@@ -6,13 +6,13 @@ import axios from "axios";
 import "./ticker.css";
 
 
-class Ticker extends Component {
+class TickerComp extends Component {
   state = {
-      Nintendo: 1,
-      Activision: 2,
-      EA: 3,
-      TakeTwo: 4,
-      Sony: 5
+      Nintendo: "",
+      Activision: "",
+      EA: "",
+      TakeTwo:  "",
+      Sony: "",
     
   };
   componentDidMount() {
@@ -25,10 +25,10 @@ class Ticker extends Component {
       let dateObj = Object.keys(obj);
       let todaysDateKey = dateObj[0];
       let todaysPrice = response.data["Weekly Time Series"][todaysDateKey];
-      let todaysClosePrice = todaysPrice['4. close']
+      let tcpNTDOY = todaysPrice['4. close'];
      
-      console.log("Nintendo $" + todaysClosePrice)
-
+      console.log("Nintendo $" + tcpNTDOY)
+      this.setState({Nintendo: tcpNTDOY});
     });
     axios({
       url:
@@ -39,10 +39,10 @@ class Ticker extends Component {
       let dateObj = Object.keys(obj);
       let todaysDateKey = dateObj[0];
       let todaysPrice = response.data["Weekly Time Series"][todaysDateKey];
-      let todaysClosePrice = todaysPrice['4. close']
+      let tcpATVI = todaysPrice['4. close']
      
-      console.log("Activision $" + todaysClosePrice)
-
+      console.log("Activision $" + tcpATVI)
+      this.setState({Activision: tcpATVI});
     });
     axios({
       url:
@@ -53,10 +53,10 @@ class Ticker extends Component {
       let dateObj = Object.keys(obj);
       let todaysDateKey = dateObj[0];
       let todaysPrice = response.data["Weekly Time Series"][todaysDateKey];
-      let todaysClosePrice = todaysPrice['4. close']
+      let tcpEA = todaysPrice['4. close']
      
-      console.log("EA $" + todaysClosePrice)
-
+      console.log("EA $" + tcpEA)
+      this.setState({EA: tcpEA});
     });
     axios({
       url:
@@ -67,10 +67,10 @@ class Ticker extends Component {
       let dateObj = Object.keys(obj);
       let todaysDateKey = dateObj[0];
       let todaysPrice = response.data["Weekly Time Series"][todaysDateKey];
-      let todaysClosePrice = todaysPrice['4. close']
+      let tcpTTWO = todaysPrice['4. close']
      
-      console.log("TAKE2 $" + todaysClosePrice)
-
+      console.log("TAKE2 $" + tcpTTWO)
+      this.setState({TakeTwo: tcpTTWO});
     });
     axios({
       url:
@@ -81,22 +81,22 @@ class Ticker extends Component {
       let dateObj = Object.keys(obj);
       let todaysDateKey = dateObj[0];
       let todaysPrice = response.data["Weekly Time Series"][todaysDateKey];
-      let todaysClosePrice = todaysPrice['4. close']
+      let tcpSNE = todaysPrice['4. close']
      
-      console.log("Sony $" + todaysClosePrice)
-
-    });
-  }
+      console.log("Sony $" + tcpSNE)
+      this.setState({Sony: tcpSNE});
+});
+   }
    render(){
     return (
     <div className="ticker">
       <Paper style={{
         padding: 10,
         }}>
-        <Typography variant="h5" component="h3" style={{textAlign:"center"}}>
+        <Typography variant="h5" component="h5" style={{textAlign:"center"}}>
           Nintendo(NTDOY): ${this.state.Nintendo} | Activision(ATVI): ${this.state.Activision} | Electronic Arts(EA): ${this.state.EA}
         </Typography>
-        <Typography variant="h5" component="h3" style={{textAlign:"center"}}>
+        <Typography variant="h5" component="h5" style={{textAlign:"center"}}>
           Take Two Interactive(TTWO): ${this.state.TakeTwo} | Sony Interactive Entertainment(SNE): ${this.state.Sony}
         </Typography>
       </Paper>
@@ -104,4 +104,4 @@ class Ticker extends Component {
   );
 };
 }
-export default Ticker;
+export default TickerComp;
