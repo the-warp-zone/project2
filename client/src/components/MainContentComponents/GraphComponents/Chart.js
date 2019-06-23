@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./chart.css";
 import CanvasJSReact from "../../../canvasjs.react";
 import axios from "axios";
-import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
@@ -45,7 +44,7 @@ class Chart extends Component {
       //backgroundColor: "#F5DEB3"
       theme: "light1", // "light1","light2", "dark1", "dark2"
       title: {
-        text: "Fast Travel Stocks"
+        text: "Fast Travel Stocks: {Nintendo}"
       },
       axisY: {
         title: "Price",

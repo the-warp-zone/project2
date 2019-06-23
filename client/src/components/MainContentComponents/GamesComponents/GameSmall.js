@@ -12,8 +12,8 @@ import "./games.css";
 
 const useStyles = makeStyles({
   card: {
-	maxWidth: 345,
-  width: "300px",
+  width: "100%",
+  justifyContent: "center",
   boxShadow: "0px 0px 8px 0px rgba(0,0,0,0.65)"
   },
   media: {
@@ -38,7 +38,7 @@ const GameSmall = () => {
             "Nintendo" Games
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            List of Game Releases 
+            List of Game Releases by "Nintendo" sorted by date.
           </Typography>
         </CardContent>
       </CardActionArea>

@@ -12,9 +12,8 @@ import "./news.css";
 
 const useStyles = makeStyles({
   card: {
-	maxWidth: 345,
-  width: "300px",
-  float: "right",
+  width: "100%",
+  justifyItems: "right",
   boxShadow: "0px 0px 8px 0px rgba(0,0,0,0.65)"
   },
   media: {
@@ -39,7 +38,7 @@ const NewsSmall = () => {
             "Nintendo" News
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Checkout Some recent news
+            Checkout recent news for "Nintendo"
           </Typography>
         </CardContent>
       </CardActionArea>

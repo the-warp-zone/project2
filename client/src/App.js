@@ -1,16 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 import Sidebar from "./components/MainContentComponents/Sidebar";
 import LandingPage from "./components/MainContentComponents/LandingPage";
 import Chart from "./components/MainContentComponents/GraphComponents/Chart";
 import NewsLarge from "./components/MainContentComponents/NewsComponents/NewsLarge";
-import Games from "./components/MainContentComponents/GamesComponents/GameCompMain";
-import NewsList from "./components/MainContentComponents/NewsComponents/NewsList";
 import GameAxios from "./components/MainContentComponents/GamesComponents/GameAxios";
 import GameSmall from "./components/MainContentComponents/GamesComponents/GameSmall";
 import NewsSmall from "./components/MainContentComponents/NewsComponents/NewsSmall";
 import Ticker from "./components/MainContentComponents/Tickercomponents/TickerMain";
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles(theme => ({
@@ -45,23 +42,24 @@ function App() {
           </Grid>
 
           <Grid item xs={12} sm={6}>
-			{/* <NewsLarge /> */}
-			<GameAxios />
-			
+			<NewsLarge />
+			{/* <GameAxios /> */}
           </Grid>
 
           <Grid item xs={6} sm={3}>
-            
           </Grid>
-          <Grid item xs={6} sm={3}>
+
+          <Grid item xs={12} sm={3}>
             <NewsSmall />
           </Grid>
-          <Grid item xs={6} sm={3}>
+
+          <Grid item xs={12} sm={3}>
             <GameSmall />
           </Grid>
+
           <Grid item xs={6} sm={3}>
-            
           </Grid>
+
         </Grid>
       </Grid>
     </div>
