@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./chart.css";
 import CanvasJSReact from "../../../canvasjs.react";
 import axios from "axios";
 import Paper from "@material-ui/core/Paper";
