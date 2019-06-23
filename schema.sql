@@ -1,4 +1,4 @@
 
--- DROP DATABASE IF EXISTS publisher_titles;
+-- DROP DATABASE IF EXISTS publisher_stock;
 
--- CREATE DATABASE publisher_titles;
+-- CREATE DATABASE publisher_stock;
