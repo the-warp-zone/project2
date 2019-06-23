@@ -26,7 +26,6 @@ const NewsSmall = () => {
 
   return (
     <Card className={classes.card}>
-      <CardActionArea>
         <CardMedia
           className={classes.media}
           image={NintendoPicNews}
@@ -40,7 +39,6 @@ const NewsSmall = () => {
             Checkout recent news for "Nintendo"
           </Typography>
         </CardContent>
-      </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
           See List

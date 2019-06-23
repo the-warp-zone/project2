@@ -44,7 +44,7 @@ function App() {
     //         </Grid>
 
     //         <Grid item xs={12} lg={6}>
-              
+    	      
     //           <GameLarge />
     //         </Grid>
 
@@ -63,22 +63,19 @@ function App() {
     //     </Grid>
     //   </div>
 	// </div>
+
+	// ---------------Conditional Render for either landing page or main content---------------------
+
 	<div className="app">
 	<div className={classes.root}>
 	  <Grid container spacing={10}>
 		<Sidebar />
 		<Grid container spacing={10} className={classes.inside}>
 			
-			<Grid item xs={6} lg={3} />
-		  <Grid item className={classes.paper} xs={6}>
+			<Grid item  lg={3} />
+		  <Grid item className={classes.paper} xs={12} lg={6}>
 			<LandingPage />
 		  </Grid>
-
-		  
-
-		 
-
-		  
 		</Grid>
 	  </Grid>
 	</div>

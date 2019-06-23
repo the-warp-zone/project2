@@ -26,7 +26,6 @@ const GameSmall = () => {
 
   return (
     <Card className={classes.card}>
-      <CardActionArea>
         <CardMedia
           className={classes.media}
           image={NintendoPic}
@@ -40,7 +39,6 @@ const GameSmall = () => {
             List of Game Releases by "Nintendo" sorted by date.
           </Typography>
         </CardContent>
-      </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
           See List

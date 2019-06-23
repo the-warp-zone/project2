@@ -29,7 +29,7 @@ const LandingPage = () => {
   };
   return (
     <Card className={classes.card}>
-      <CardActionArea>
+      
         <CardMedia
           className={classes.media}
           image={LandingPic}
@@ -46,7 +46,7 @@ const LandingPage = () => {
           clickable buttons for news, games, and about the publisher.
           </Typography>
         </CardContent>
-      </CardActionArea>
+      
       <CardActions>
       <Button variant="contained" size="small" color="default" style={bStyle}>
         Get Started
