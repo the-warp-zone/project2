@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import moment from "moment";
-import LargeCard from "./LargeCard"
+import LargeCard from "./GameLarge"
 
 class GameAxios extends Component {
   state = {

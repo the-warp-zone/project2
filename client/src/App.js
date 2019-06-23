@@ -6,7 +6,8 @@ import NewsLarge from "./components/MainContentComponents/NewsComponents/NewsLar
 import Games from "./components/MainContentComponents/GamesComponents/GameCompMain";
 import NewsList from "./components/MainContentComponents/NewsComponents/NewsList";
 import GameAxios from "./components/MainContentComponents/GamesComponents/GameAxios";
-import GameCardSmall from "./components/MainContentComponents/GamesComponents/GameSmall";
+import GameSmall from "./components/MainContentComponents/GamesComponents/GameSmall";
+import NewsSmall from "./components/MainContentComponents/NewsComponents/NewsSmall";
 import Ticker from "./components/MainContentComponents/Tickercomponents/TickerMain";
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -17,7 +18,8 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
   },
   inside: {
-	  margin: "5%"
+	flexGrow: 1,
+	margin: "5%"
 	},
   paper: {
     padding: theme.spacing(2),
@@ -31,32 +33,34 @@ function App() {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={10}>
+      <Grid container spacing={3}>
         <Sidebar />
         <Grid container spacing={10} className={classes.inside}>
           <Grid item className={classes.paper} xs={12}>
             <Ticker />
           </Grid>
 
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <Chart />
           </Grid>
 
-          <Grid item xs={6}>
-            <NewsLarge />
+          <Grid item xs={12} sm={6}>
+			{/* <NewsLarge /> */}
+			<GameAxios />
+			
           </Grid>
 
-          <Grid item xs={3}>
-            <Paper className={classes.paper}>xs=3</Paper>
+          <Grid item xs={6} sm={3}>
+            
           </Grid>
-          <Grid item xs={3}>
-            <Paper className={classes.paper}>xs=3</Paper>
+          <Grid item xs={6} sm={3}>
+            <NewsSmall />
           </Grid>
-          <Grid item xs={3}>
-            <Paper className={classes.paper}>xs=3</Paper>
+          <Grid item xs={6} sm={3}>
+            <GameSmall />
           </Grid>
-          <Grid item xs={3}>
-            <Paper className={classes.paper}>xs=3</Paper>
+          <Grid item xs={6} sm={3}>
+            
           </Grid>
         </Grid>
       </Grid>

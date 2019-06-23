@@ -60,7 +60,7 @@ const NewsList = props => {
     <div style={listStyle}>
       
       <List className={classes.root}>
-        <Button variant="contained" size="small" color="third" style={bStyle}>
+        <Button variant="contained" size="small" color="default" style={bStyle}>
         Close
       </Button>
         {newsItem}

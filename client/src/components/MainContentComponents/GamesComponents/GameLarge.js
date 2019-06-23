@@ -156,10 +156,8 @@ const ReactVirtualizedTable = ({ data }) => {
       style={{
         height: 400,
         width: "100%",
+        boxShadow: "0px 0px 8px 0px rgba(0,0,0,0.65)"
         // background: 'linear-gradient(45deg, #0a9df1, #62058d)',
-       
-        marginTop: "8%",
-        marginRight: "25%"
       }}
     >
       <VirtualizedTable
@@ -178,7 +176,7 @@ const ReactVirtualizedTable = ({ data }) => {
           }
         ]}
       />
-      <Button variant="contained" size="small" color="third" style={bStyle}>
+      <Button variant="contained" size="small" color="default" style={bStyle}>
         Close
       </Button>
     </Paper>

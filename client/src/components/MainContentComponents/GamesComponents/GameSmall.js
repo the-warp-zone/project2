@@ -13,9 +13,8 @@ import "./games.css";
 const useStyles = makeStyles({
   card: {
 	maxWidth: 345,
-	marginTop: "8%",
-	marginLeft: "40%",
-	width: "300px"
+  width: "300px",
+  boxShadow: "0px 0px 8px 0px rgba(0,0,0,0.65)"
   },
   media: {
     height: 140,
@@ -23,7 +22,7 @@ const useStyles = makeStyles({
 
 });
 
-const GameCardSmall = () => {
+const GameSmall = () => {
   const classes = useStyles();
 
   return (
@@ -39,7 +38,7 @@ const GameCardSmall = () => {
             "Nintendo" Games
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Checkout a list of games in order of release date
+            List of Game Releases 
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -51,4 +50,4 @@ const GameCardSmall = () => {
     </Card>
   );
 }
-export default GameCardSmall;
+export default GameSmall;

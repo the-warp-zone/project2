@@ -12,17 +12,18 @@ import "./news.css";
 
 const useStyles = makeStyles({
   card: {
-    maxWidth: 345,
-    marginTop: "8%",
-    marginLeft: "40%",
-    width: "300px"
+	maxWidth: 345,
+  width: "300px",
+  float: "right",
+  boxShadow: "0px 0px 8px 0px rgba(0,0,0,0.65)"
   },
   media: {
-    height: 140
-  }
+    height: 140,
+  },
+
 });
 
-const GameCardSmall = () => {
+const NewsSmall = () => {
   const classes = useStyles();
 
   return (
@@ -38,7 +39,7 @@ const GameCardSmall = () => {
             "Nintendo" News
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Checkout a recent news about "Nintendo"
+            Checkout Some recent news
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -50,4 +51,4 @@ const GameCardSmall = () => {
     </Card>
   );
 };
-export default GameCardSmall;
+export default NewsSmall;
