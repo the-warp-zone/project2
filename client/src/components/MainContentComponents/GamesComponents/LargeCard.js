@@ -6,7 +6,6 @@ import TableCell from "@material-ui/core/TableCell";
 import Paper from "@material-ui/core/Paper";
 import { AutoSizer, Column, Table } from "react-virtualized";
 import Button from "@material-ui/core/Button";
-import Iframe from "react-iframe";
 
 const styles = theme => ({
   flexContainer: {
@@ -155,10 +154,10 @@ const ReactVirtualizedTable = ({ data }) => {
   return (
     <Paper
       style={{
-        height: 800,
-        width: "20%",
+        height: 400,
+        width: "100%",
         // background: 'linear-gradient(45deg, #0a9df1, #62058d)',
-        float: "right",
+       
         marginTop: "8%",
         marginRight: "25%"
       }}

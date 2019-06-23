@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 import moment from "moment";
-import GameListItem from "./GameListItem";
 import LargeCard from "./LargeCard"
-class GameLarge extends Component {
+
+class GameAxios extends Component {
   state = {
     gamesList: []
   };
@@ -30,9 +30,6 @@ class GameLarge extends Component {
         for (var property in obj) {
           let x = obj[property]["name"];
           let y = obj[property]["first_release_date"];
-          //let y = moment.unix(obj[property]["first_release_date"]).format('MMMM Do YYYY');
-          // console.log(y);
-          // console.log(x);
 
           firstList.push([moment.unix(y).format("MMM DD YYYY"), x]);
           //gamesList.push([y,x]);
@@ -60,11 +57,7 @@ class GameLarge extends Component {
   
   render() {
     
-    console.log(this.state.gamesList);
-    // Placing all of this below into it's own component so that it's not messing with the state..?
-    // const gameItem = this.state.gamesList.map(item => (
-    // <GameListItem date={item[0]} title={item[1]}/>
-    // ));
+    //console.log(this.state.gamesList);
     return (
       <div>
         <LargeCard data={this.state.gamesList}/>
@@ -72,4 +65,4 @@ class GameLarge extends Component {
     );
   }
 }
-export default GameLarge;
+export default GameAxios;

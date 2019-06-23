@@ -16,11 +16,7 @@ class Chart extends Component {
       url:
         "https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&apikey=6J7PBJ5E6ZV76KME&symbol=NTDOY"
     }).then(response => {
-      //const dataPoints = response.data['Weekly Time Series'];
-      // let responseKeys = Object.keys(response.data['Weekly Time Series'])
-      // let responseKeysUpdated = Object.values(responseKeys)
-      // let responseValue = Object.values(response.data['Weekly Time Series']);
-      console.log(response.data["Weekly Time Series"]);
+      //console.log(response.data["Weekly Time Series"]);
       // console.log(responseValue);
       let obj = response.data["Weekly Time Series"];
       let dataPoints = [];
@@ -44,8 +40,8 @@ class Chart extends Component {
       interactivityEnabled: true,
       zoomEnabled: true,
       zoomType: "xy",
-      // width: 600,
-      height: 600,
+     
+      
       //backgroundColor: "#F5DEB3"
       theme: "light1", // "light1","light2", "dark1", "dark2"
       title: {
@@ -73,13 +69,9 @@ class Chart extends Component {
     return (
       <div>
       <Paper style={{ 
-      height: 600,
-      width: "20%",
       borderRadius: "0.5rem",
-      // background: 'linear-gradient(45deg, #0a9df1, #62058d)', 
-      float: "right", 
-      marginTop: "8%", 
-      marginRight: "25%" }}>
+      boxShadow: "0px 0px 8px 0px rgba(0,0,0,0.65)"
+       }}>
         <CanvasJSChart options={options} />
       </Paper>
     </div>

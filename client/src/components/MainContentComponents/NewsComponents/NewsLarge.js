@@ -1,12 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
-import moment from "moment";
 import NewsList from "./NewsList";
-import { makeStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
-import { Grid, AppBar, Toolbar, Typography } from "@material-ui/core";
 import "./news.css";
-import Button from "@material-ui/core/Button";
+
 
 class NewsLarge extends Component {
   state = {
@@ -27,7 +23,7 @@ class NewsLarge extends Component {
         let titles = this.getTitles(response.data.value);
         let descriptions = this.getDescriptions(response.data.value);
         let mixed = this.getFinalList(titles, descriptions);
-        console.log(response.data.value[0]); //.url, .title, .description, you are either .yeeted or .yooted
+        //console.log(response.data.value[0]); //.url, .title, .description, you are either .yeeted or .yooted
         this.setState({ newsList: response.data.value });
       })
       .catch(err => {

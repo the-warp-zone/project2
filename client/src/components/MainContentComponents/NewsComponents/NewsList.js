@@ -14,12 +14,11 @@ import Button from "@material-ui/core/Button";
 const useStyles = makeStyles(theme => ({
   root: {
     width: "100%",
-    maxWidth: 360,
     backgroundColor: theme.palette.background.paper,
-    float: "right",
-    marginTop: "15%",
+    borderRadius: "0.5rem",
     overflowY: "scroll",
-    maxHeight: 600
+    maxHeight: 400,
+    boxShadow: "0px 0px 8px 0px rgba(0,0,0,0.65)"
   },
   inline: {
     display: "inline"
@@ -37,12 +36,16 @@ const useStyles = makeStyles(theme => ({
 // };
 
 const NewsList = props => {
+  const listStyle = {
+    width: "100%",
+    height: "100%"
+  }
   const bStyle = {
-    // marginRight: "1%",
-    // marginTop: "17%",
-    // float: "right",
-    // background: "linear-gradient(45deg, #0a9df1 , #62058d )",
-    // color: "white"
+    marginLeft: "5px",
+    marginTop: "5px",
+    float: "right",
+    background: "linear-gradient(45deg, #0a9df1 , #62058d )",
+    color: "white"
   };
   const classes = useStyles();
   var id = 0;
@@ -51,15 +54,18 @@ const NewsList = props => {
     <NewsListItem key={id++} data={item} />
   ));
 
-  console.log(props.data);
+  //console.log(props.data);
 
   return (
-    <div>
-      {/* <Button variant="contained" size="small" color="third" style={bStyle}>
+    <div style={listStyle}>
+      
+      <List className={classes.root}>
+        <Button variant="contained" size="small" color="third" style={bStyle}>
         Close
-      </Button> */}
-      <h1>Hey</h1>
-      <List className={classes.root}>{newsItem}</List>
+      </Button>
+        {newsItem}
+      </List>
+      
     </div>
     // <div>
     //   <li>
