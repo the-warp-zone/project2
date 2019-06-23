@@ -20,10 +20,11 @@ import SvgIcon from "../SideBarComponents/SVGIcon";
 import purple from "@material-ui/core/colors/purple";
 import grey from "@material-ui/core/colors/grey";
 
+
 const primary = purple[900];
 const secondary = grey[900];
-const third = grey[50];
-const fourth = grey[200];
+const third = purple[700];
+//const fourth = grey[200];
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -189,7 +190,6 @@ export default function MiniDrawer() {
           ))}
         </List> */}
       </Drawer>
-      
     </div>
   );
 }

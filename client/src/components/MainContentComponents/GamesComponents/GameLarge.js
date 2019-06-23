@@ -1,75 +1,185 @@
-import React, { Component } from "react";
-import axios from "axios";
-import moment from "moment";
-import GameListItem from "./GameListItem";
-import LargeCard from "./LargeCard"
-class GameLarge extends Component {
-  state = {
-    gamesList: []
+import React from "react";
+import PropTypes from "prop-types";
+import clsx from "clsx";
+import { withStyles } from "@material-ui/core/styles";
+import TableCell from "@material-ui/core/TableCell";
+import Paper from "@material-ui/core/Paper";
+import { AutoSizer, Column, Table } from "react-virtualized";
+import Button from "@material-ui/core/Button";
+
+const styles = theme => ({
+  flexContainer: {
+    display: "flex",
+    alignItems: "center",
+    boxSizing: "border-box"
+  },
+  margin: {
+    margin: theme.spacing(1)
+  },
+  tableRow: {
+    cursor: "pointer"
+  },
+  tableRowHover: {
+    "&:hover": {
+      backgroundColor: theme.palette.grey[300]
+    }
+  },
+  tableCell: {
+    flex: 1
+  },
+  noClick: {
+    cursor: "initial"
+  }
+});
+
+class MuiVirtualizedTable extends React.PureComponent {
+  static defaultProps = {
+    headerHeight: 48,
+    rowHeight: 65
   };
 
-  componentDidMount() {
-    axios({
-      url:
-        "https://cors-anywhere.herokuapp.com/https://api-v3.igdb.com/companies",
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "user-key": "c1c717a3e484c33bb482bdb7f9fb7eb4"
-      },
-      data:
-        'fields name,published.name,published.first_release_date; sort popularity desc; where name = "Nintendo";'
-    })
-      .then(response => {
-        //console.log(response.data[0]['published'][0]['first_release_date']);
+  getRowClassName = ({ index }) => {
+    const { classes, onRowClick } = this.props;
+    // console.log(this.props.classes);
 
-        let obj = response.data[0]["published"];
-        let firstList = [];
-        //console.log(obj);
+    return clsx(classes.tableRow, classes.flexContainer, {
+      [classes.tableRowHover]: index !== -1 && onRowClick != null
+    });
+  };
 
-        for (var property in obj) {
-          let x = obj[property]["name"];
-          let y = obj[property]["first_release_date"];
-          //let y = moment.unix(obj[property]["first_release_date"]).format('MMMM Do YYYY');
-          // console.log(y);
-          // console.log(x);
-
-          firstList.push([moment.unix(y).format("MMM DD YYYY"), x]);
-          //gamesList.push([y,x]);
-        }
-
-        const result = firstList.filter(title => title[0] !== "Invalid date");
-
-        const result2 = result.filter(title => title[1] !== undefined);
-        //console.log(result);
-        //console.log(gamesList);
-
-        let gamesList = result2.sort(
-          (a, b) =>
-            new moment(b[0], "MMM DD YYYY") - new moment(a[0], "MMM DD YYYY")
-        );
-        //console.log(gamesList);
-
-        this.setState({ gamesList });
-      })
-      .catch(err => {
-        console.error(err);
-      });
-      
-  }
-  
-  render() {
-    
-    console.log(this.state.gamesList);
-    // Placing all of this below into it's own component so that it's not messing with the state..?
-    // const gameItem = this.state.gamesList.map(item => (
-    // <GameListItem date={item[0]} title={item[1]}/>
-    // ));
+  cellRenderer = ({ cellData, columnIndex }) => {
+    const { columns, classes, rowHeight, onRowClick } = this.props;
     return (
-      <div>
-        <LargeCard data={this.state.gamesList}/>
-      </div>
+      <TableCell
+        component="div"
+        className={clsx(classes.tableCell, classes.flexContainer, {
+          [classes.noClick]: onRowClick == null
+        })}
+        variant="body"
+        style={{ height: rowHeight }}
+        align={
+          (columnIndex != null && columns[columnIndex].numeric) || false
+            ? "right"
+            : "left"
+        }
+      >
+        {cellData}
+      </TableCell>
+    );
+  };
+
+  headerRenderer = ({ label, columnIndex }) => {
+    const { headerHeight, columns, classes } = this.props;
+
+    return (
+      <TableCell
+        component="div"
+        className={clsx(
+          classes.tableCell,
+          classes.flexContainer,
+          classes.noClick
+        )}
+        variant="head"
+        style={{ height: headerHeight }}
+        align={columns[columnIndex].numeric || false ? "right" : "left"}
+      >
+        <span>{label}</span>
+      </TableCell>
+    );
+  };
+
+  render() {
+    const { classes, columns, ...tableProps } = this.props;
+    return (
+      <AutoSizer>
+        {({ height, width }) => (
+          <Table
+            height={height}
+            width={width}
+            {...tableProps}
+            rowClassName={this.getRowClassName}
+          >
+            {columns.map(({ dataKey, ...other }, index) => {
+              return (
+                <Column
+                  key={dataKey}
+                  headerRenderer={headerProps =>
+                    this.headerRenderer({
+                      ...headerProps,
+                      columnIndex: index
+                    })
+                  }
+                  className={classes.flexContainer}
+                  cellRenderer={this.cellRenderer}
+                  dataKey={dataKey}
+                  {...other}
+                />
+              );
+            })}
+          </Table>
+        )}
+      </AutoSizer>
     );
   }
 }
-export default GameLarge;
+
+MuiVirtualizedTable.propTypes = {
+  classes: PropTypes.object.isRequired,
+  columns: PropTypes.arrayOf(PropTypes.object).isRequired,
+  headerHeight: PropTypes.number,
+  onRowClick: PropTypes.func,
+  rowHeight: PropTypes.number
+};
+
+const VirtualizedTable = withStyles(styles)(MuiVirtualizedTable);
+
+const ReactVirtualizedTable = ({ data }) => {
+  const gameList = data;
+  function createData(id, date, title) {
+    return { id, date, title };
+  }
+
+  const rows = [];
+
+  for (let i = 0; i < gameList.length; i += 1) {
+    rows.push(createData(i, gameList[i][0], gameList[i][1]));
+  }
+  const bStyle = {
+    marginRight: "1%",
+    marginTop: "1%",
+    float: "right",
+    background: "linear-gradient(45deg, #0a9df1 , #62058d )",
+    color: "white"
+  };
+  return (
+    <Paper
+      style={{
+        height: 400,
+        width: "100%",
+        boxShadow: "0px 0px 8px 0px rgba(0,0,0,0.65)"
+        // background: 'linear-gradient(45deg, #0a9df1, #62058d)',
+      }}
+    >
+      <VirtualizedTable
+        rowCount={rows.length}
+        rowGetter={({ index }) => rows[index]}
+        columns={[
+          {
+            width: 200,
+            label: "Release Date",
+            dataKey: "date"
+          },
+          {
+            width: 400,
+            label: "Game Title",
+            dataKey: "title"
+          }
+        ]}
+      />
+      <Button variant="contained" size="small" color="default" style={bStyle}>
+        Close
+      </Button>
+    </Paper>
+  );
+};
+export default ReactVirtualizedTable;
