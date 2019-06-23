@@ -1,13 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import moment from "moment";
 import NewsList from "./NewsList";
-import { makeStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
-import { Grid, AppBar, Toolbar, Typography } from "@material-ui/core";
-import "./news.css";
-import InfiniteScroll from "react-infinite-scroll-component";
-import Button from "@material-ui/core/Button";
+
 
 class NewsLarge extends Component {
   state = {
@@ -25,10 +19,10 @@ class NewsLarge extends Component {
       .then(response => {
         //console.log(response.data);
 
-        let titles = this.getTitles(response.data.value);
-        let descriptions = this.getDescriptions(response.data.value);
-        let mixed = this.getFinalList(titles, descriptions);
-        console.log(response.data.value[0]); //.url, .title, .description, you are either .yeeted or .yooted
+        // let titles = this.getTitles(response.data.value);
+        // let descriptions = this.getDescriptions(response.data.value);
+        // let mixed = this.getFinalList(titles, descriptions);
+        //console.log(response.data.value[0]); //.url, .title, .description, you are either .yeeted or .yooted
         this.setState({ newsList: response.data.value });
       })
       .catch(err => {
@@ -61,13 +55,13 @@ class NewsLarge extends Component {
   }
 
   render() {
-    const bStyle = {
-      marginRight: "1%",
-      marginTop: "17%",
-      float: "right",
-      background: "linear-gradient(45deg, #0a9df1 , #62058d )",
-      color: "white"
-    };
+    // const bStyle = {
+    //   marginRight: "1%",
+    //   marginTop: "17%",
+    //   float: "right",
+    //   background: "linear-gradient(45deg, #0a9df1 , #62058d )",
+    //   color: "white"
+    // };
     return (
       <div>
         <NewsList data={this.state.newsList} />

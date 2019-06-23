@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import GameSmall from "./GameSmall";
-import GameLarge from "./GameLarge";
+import GameLarge from "./GameAxios";
 import GameCardSmall from "./GameSmall";
  
 class Games extends Component {
@@ -10,9 +10,9 @@ class Games extends Component {
 		<div>
             {/* {conditional if button is pressed load either small or large}  */}
            <div>
-               <GameLarge />
+               {/* <GameLarge /> */}
 
-			   <GameCardSmall />
+			   {/* <GameCardSmall /> */}
             </div>
 		</div>
 		);
