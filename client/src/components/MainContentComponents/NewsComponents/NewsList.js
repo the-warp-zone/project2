@@ -18,21 +18,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-// var AlignItemsList = props => {
-//   const classes = useStyles();
-
-//   return (
-//     <List className={classes.root}>
-//       <NewsListItem data={} style={}/>
-//     </List>
-//   );
-// };
-
 const NewsList = props => {
   const listStyle = {
     width: "100%",
     height: "100%"
-  }
+  };
   const bStyle = {
     marginRight: "5px",
     marginTop: "5px",
@@ -51,20 +41,13 @@ const NewsList = props => {
 
   return (
     <div style={listStyle}>
-      
       <List className={classes.root}>
         <Button variant="contained" size="small" color="default" style={bStyle}>
-        Close
-      </Button>
+          Close
+        </Button>
         {newsItem}
       </List>
-      
     </div>
-    // <div>
-    //   <li>
-    //     Title: {props.title}, Desciption: {props.description}
-    //   </li>
-    // </div>
   );
 };
 

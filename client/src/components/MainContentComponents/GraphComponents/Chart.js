@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import "./chart.css";
 import CanvasJSReact from "../../../canvasjs.react";
 import axios from "axios";
-import Paper from '@material-ui/core/Paper';
+import Paper from "@material-ui/core/Paper";
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 class Chart extends Component {
   state = {
     dataPoints: []
   };
-  
+
   componentDidMount() {
     axios({
       url:
@@ -30,17 +30,15 @@ class Chart extends Component {
       this.setState({ dataPoints });
     });
   }
-   
+
   render() {
-    
     const options = {
       animationEnabled: true,
       exportEnabled: true,
       interactivityEnabled: true,
       zoomEnabled: true,
       zoomType: "xy",
-     
-      
+
       //backgroundColor: "#F5DEB3"
       theme: "light1", // "light1","light2", "dark1", "dark2"
       title: {
@@ -67,13 +65,15 @@ class Chart extends Component {
 
     return (
       <div>
-      <Paper style={{ 
-      borderRadius: "0.5rem",
-      boxShadow: "0px 0px 8px 0px rgba(0,0,0,0.65)"
-       }}>
-        <CanvasJSChart options={options} />
-      </Paper>
-    </div>
+        <Paper
+          style={{
+            borderRadius: "0.5rem",
+            boxShadow: "0px 0px 8px 0px rgba(0,0,0,0.65)"
+          }}
+        >
+          <CanvasJSChart options={options} />
+        </Paper>
+      </div>
     );
   }
 }

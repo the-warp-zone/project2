@@ -3,7 +3,6 @@ import axios from "axios";
 import NewsList from "./NewsList";
 import "./news.css";
 
-
 class NewsLarge extends Component {
   state = {
     newsList: []

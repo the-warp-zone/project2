@@ -12,14 +12,13 @@ import "./news.css";
 
 const useStyles = makeStyles({
   card: {
-  width: "100%",
-  justifyItems: "right",
-  boxShadow: "0px 0px 8px 0px rgba(0,0,0,0.65)"
+    width: "100%",
+    justifyItems: "right",
+    boxShadow: "0px 0px 8px 0px rgba(0,0,0,0.65)"
   },
   media: {
-    height: 140,
-  },
-
+    height: 140
+  }
 });
 
 const NewsSmall = () => {

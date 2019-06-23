@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import moment from "moment";
-import LargeCard from "./GameLarge"
+import LargeCard from "./GameLarge";
 
 class GameAxios extends Component {
   state = {
@@ -52,15 +52,12 @@ class GameAxios extends Component {
       .catch(err => {
         console.error(err);
       });
-      
   }
-  
   render() {
-    
     //console.log(this.state.gamesList);
     return (
       <div>
-        <LargeCard data={this.state.gamesList}/>
+        <LargeCard data={this.state.gamesList} />
       </div>
     );
   }
