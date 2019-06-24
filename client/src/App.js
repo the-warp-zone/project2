@@ -37,9 +37,11 @@ function AppLoader() {
   const [isLandingClicked, setLanding] = React.useState(false);
   const [publisherData, setPublisher] = React.useState("");
   const [ticker, setTicker] = React.useState("");
+  const [whichList, setList] = React.useState(true);
 
   function getStarted() {
     setLanding(true);
+    setPublisher("Nintendo");
   }
 
   function getPublisherInfo(event) {
@@ -49,11 +51,13 @@ function AppLoader() {
   }
 
   var expandGames = event => {
-    //
+    // Set Large List On
+    setList(true);
   };
 
   var expandNews = event => {
-    //
+    // Switch Game List with News List
+    setList(false);
   };
 
   if (isLandingClicked) {
@@ -73,7 +77,11 @@ function AppLoader() {
 
               <Grid item xs={12} lg={6}>
                 {/* {Might want to make this conditional} */}
-                <GameAxios data={publisherData} />
+                {whichList === true ? (
+                  <GameAxios data={publisherData} />
+                ) : (
+                  <NewsLarge data={publisherData} />
+                )}
               </Grid>
 
               <Grid item xs={6} lg={3} />
