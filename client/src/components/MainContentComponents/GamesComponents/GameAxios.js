@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import moment from "moment";
-import LargeCard from "./GameLarge";
+import GameLarge from "./GameLarge";
 
 class GameAxios extends Component {
   state = {
@@ -9,6 +9,17 @@ class GameAxios extends Component {
   };
 
   componentDidMount() {
+    this.axiosCall(this.props.data);
+  }
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    if (this.props.data !== prevProps.data) {
+      this.axiosCall(this.props.data);
+    }
+  }
+
+  axiosCall(data) {
+    if (data === "Sony") data = "Sony Interactive Entertainment";
     axios({
       url:
         "https://cors-anywhere.herokuapp.com/https://api-v3.igdb.com/companies",
@@ -18,7 +29,9 @@ class GameAxios extends Component {
         "user-key": "c1c717a3e484c33bb482bdb7f9fb7eb4"
       },
       data:
-        'fields name,published.name,published.first_release_date; sort popularity desc; where name = "Nintendo";'
+        'fields name,published.name,published.first_release_date; sort popularity desc; where name = "' +
+        data +
+        '";'
     })
       .then(response => {
         //console.log(response.data[0]['published'][0]['first_release_date']);
@@ -53,11 +66,13 @@ class GameAxios extends Component {
         console.error(err);
       });
   }
+
   render() {
     //console.log(this.state.gamesList);
+    console.log(this.props.data);
     return (
       <div>
-        <LargeCard data={this.state.gamesList} />
+        <GameLarge data={this.state.gamesList} />
       </div>
     );
   }

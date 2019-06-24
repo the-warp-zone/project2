@@ -10,9 +10,37 @@ class Chart extends Component {
   };
 
   componentDidMount() {
+    this.axiosCall(this.props.data);
+  }
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    if (this.props.data !== prevProps.data) {
+      this.axiosCall(this.props.data);
+    }
+  }
+  axiosCall(data) {
+    var stockTicker = "";
+    switch (data) {
+      case "Nintendo":
+        stockTicker = "NTDOY";
+        break;
+      case "Sony":
+        stockTicker = "SNE";
+        break;
+      case "Activision":
+        stockTicker = "ATVI";
+        break;
+      case "Take-Two Interactive":
+        stockTicker = "TTWO";
+        break;
+      case "Ubisoft":
+        stockTicker = "UBSFY";
+        break;
+    }
     axios({
       url:
-        "https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&apikey=6J7PBJ5E6ZV76KME&symbol=NTDOY"
+        "https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&apikey=6J7PBJ5E6ZV76KME&symbol=" +
+        stockTicker
     }).then(response => {
       // pass the symbol as a prop?
 
@@ -43,7 +71,7 @@ class Chart extends Component {
       //backgroundColor: "#F5DEB3"
       theme: "light1", // "light1","light2", "dark1", "dark2"
       title: {
-        text: "Fast Travel Stocks: {Nintendo}"
+        text: "Fast Travel Stocks: " + this.props.data
       },
       axisY: {
         title: "Price",

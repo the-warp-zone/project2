@@ -176,9 +176,6 @@ const ReactVirtualizedTable = ({ data }) => {
           }
         ]}
       />
-      <Button variant="contained" size="small" color="default" style={bStyle}>
-        Close
-      </Button>
     </Paper>
   );
 };

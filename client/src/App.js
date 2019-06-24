@@ -3,37 +3,13 @@ import Sidebar from "./components/MainContentComponents/Sidebar";
 import LandingPage from "./components/MainContentComponents/LandingPage";
 import Chart from "./components/MainContentComponents/GraphComponents/Chart";
 import NewsLarge from "./components/MainContentComponents/NewsComponents/NewsLarge";
-import GameLarge from "./components/MainContentComponents/GamesComponents/GameAxios";
+import GameAxios from "./components/MainContentComponents/GamesComponents/GameAxios";
 import GameSmall from "./components/MainContentComponents/GamesComponents/GameSmall";
 import NewsSmall from "./components/MainContentComponents/NewsComponents/NewsSmall";
 import Ticker from "./components/MainContentComponents/Tickercomponents/TickerMain";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import "./app.css";
-
-// class App extends Component {
-//   state: {
-//     isLandingClicked: false
-//   };
-//   // this.getStarted = this.getStarted.bind(this);
-
-//   clickPublisher = event => {
-//     // publisher choice
-//     this.setState({});
-//   };
-//   getStarted = event => {
-//     console.log(event.target);
-//     // Switch from landing to mainhub
-//     this.setState({ isLandingClicked: true });
-//   };
-//   expandNews = event => {
-//     // news
-//     this.setState({});
-//   };
-//   expandGames = event => {
-//     // games
-//     this.setState({});
-//   };
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -61,24 +37,27 @@ function AppLoader() {
   const [isLandingClicked, setLanding] = React.useState(false);
   const [publisherData, setPublisher] = React.useState("");
   const [ticker, setTicker] = React.useState("");
+  const [whichList, setList] = React.useState(true);
 
   function getStarted() {
     setLanding(true);
+    setPublisher("Nintendo");
   }
 
   function getPublisherInfo(event) {
     if (!isLandingClicked) getStarted(); // isLandingClicked is false, call the getStarted function
-    console.log(event.target);
-    setPublisher(event.target.value);
-    // console.log(publisherData);
+    setPublisher(event.currentTarget.getAttribute("value"));
+    // API call for News, Games
   }
 
   var expandGames = event => {
-    //
+    // Set Large List On
+    setList(true);
   };
 
   var expandNews = event => {
-    //
+    // Switch Game List with News List
+    setList(false);
   };
 
   if (isLandingClicked) {
@@ -93,11 +72,16 @@ function AppLoader() {
               </Grid>
 
               <Grid item xs={12} lg={6}>
-                <Chart />
+                <Chart data={publisherData} />
               </Grid>
 
               <Grid item xs={12} lg={6}>
-                <GameLarge />
+                {/* {Might want to make this conditional} */}
+                {whichList === true ? (
+                  <GameAxios data={publisherData} />
+                ) : (
+                  <NewsLarge data={publisherData} />
+                )}
               </Grid>
 
               <Grid item xs={6} lg={3} />
@@ -107,7 +91,7 @@ function AppLoader() {
               </Grid>
 
               <Grid item xs={12} lg={3}>
-                <GameSmall onClick={expandGames} />
+                <GameSmall onClick={expandGames} data={publisherData} />
               </Grid>
 
               <Grid item xs={6} lg={3} />
