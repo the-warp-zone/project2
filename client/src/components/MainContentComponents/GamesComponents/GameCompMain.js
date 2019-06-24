@@ -1,21 +1,21 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import GameSmall from "./GameSmall";
 import GameLarge from "./GameAxios";
 import GameCardSmall from "./GameSmall";
- 
+
 class Games extends Component {
+  render() {
+    // Conditional statement
+    return (
+      <div>
+        {/* {conditional if button is pressed load either small or large}  */}
+        <div>
+          {/* <GameLarge /> */}
 
-	render() {
-		return (
-		<div>
-            {/* {conditional if button is pressed load either small or large}  */}
-           <div>
-               {/* <GameLarge /> */}
-
-			   {/* <GameCardSmall /> */}
-            </div>
-		</div>
-		);
-	}
+          {/* <GameCardSmall /> */}
+        </div>
+      </div>
+    );
+  }
 }
-export default Games;        
+export default Games;

@@ -9,11 +9,10 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import NintendoPicNews from "../../../../src/src_images/nintendo_news.jpg";
 
-
 const useStyles = makeStyles({
   card: {
     width: "100%",
-    justifyItems: "right",
+    justifyContent: "center",
     boxShadow: "0px 0px 8px 0px rgba(0,0,0,0.65)"
   },
   media: {
@@ -21,26 +20,26 @@ const useStyles = makeStyles({
   }
 });
 
-const NewsSmall = () => {
+const NewsSmall = props => {
   const classes = useStyles();
 
   return (
     <Card className={classes.card}>
-        <CardMedia
-          className={classes.media}
-          image={NintendoPicNews}
-          title="Nintendo News Picture"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            "Nintendo" News
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Checkout recent news for "Nintendo"
-          </Typography>
-        </CardContent>
+      <CardMedia
+        className={classes.media}
+        image={NintendoPicNews}
+        title="Nintendo News Picture"
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="h2">
+          {props.data} News
+        </Typography>
+        <Typography variant="body2" color="textSecondary" component="p">
+          Checkout recent news for {props.data}
+        </Typography>
+      </CardContent>
       <CardActions>
-        <Button size="small" color="primary">
+        <Button size="small" color="primary" onClick={props.onClick}>
           See List
         </Button>
       </CardActions>

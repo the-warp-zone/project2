@@ -9,7 +9,6 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import NintendoPic from "../../../../src/src_images/nintendo_card.jpg";
 
-
 const useStyles = makeStyles({
   card: {
     width: "100%",
@@ -21,26 +20,26 @@ const useStyles = makeStyles({
   }
 });
 
-const GameSmall = () => {
+const GameSmall = props => {
   const classes = useStyles();
 
   return (
     <Card className={classes.card}>
-        <CardMedia
-          className={classes.media}
-          image={NintendoPic}
-          title="Nintendo Picture"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            "Nintendo" Games
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            List of Game Releases by "Nintendo" sorted by date.
-          </Typography>
-        </CardContent>
+      <CardMedia
+        className={classes.media}
+        image={NintendoPic}
+        title="Nintendo Picture"
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="h2">
+          "Nintendo" Games
+        </Typography>
+        <Typography variant="body2" color="textSecondary" component="p">
+          List of Game Releases by "Nintendo" sorted by date.
+        </Typography>
+      </CardContent>
       <CardActions>
-        <Button size="small" color="primary">
+        <Button size="small" color="primary" onClick={props.onClick}>
           See List
         </Button>
       </CardActions>

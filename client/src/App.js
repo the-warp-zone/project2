@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import Sidebar from "./components/MainContentComponents/Sidebar";
 import LandingPage from "./components/MainContentComponents/LandingPage";
 import Chart from "./components/MainContentComponents/GraphComponents/Chart";
@@ -10,6 +10,30 @@ import Ticker from "./components/MainContentComponents/Tickercomponents/TickerMa
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import "./app.css";
+
+// class App extends Component {
+//   state: {
+//     isLandingClicked: false
+//   };
+//   // this.getStarted = this.getStarted.bind(this);
+
+//   clickPublisher = event => {
+//     // publisher choice
+//     this.setState({});
+//   };
+//   getStarted = event => {
+//     console.log(event.target);
+//     // Switch from landing to mainhub
+//     this.setState({ isLandingClicked: true });
+//   };
+//   expandNews = event => {
+//     // news
+//     this.setState({});
+//   };
+//   expandGames = event => {
+//     // games
+//     this.setState({});
+//   };
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -26,61 +50,90 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function App() {
+// Change this to Class
+// state
+// isLandingPage clicked
+// else Main hub
+
+// What about the sidebar?
+function AppLoader() {
   const classes = useStyles();
+  const [isLandingClicked, setLanding] = React.useState(false);
+  const [publisherData, setPublisher] = React.useState("");
+  const [ticker, setTicker] = React.useState("");
 
-  return (
-    // <div className="app">
-    //   <div className={classes.root}>
-    //     <Grid container spacing={10}>
-    //       <Sidebar />
-    //       <Grid container spacing={10} className={classes.inside}>
-    //         <Grid item className={classes.paper} xs={12}>
-    //           <Ticker />
-    //         </Grid>
+  function getStarted() {
+    setLanding(true);
+  }
 
-    //         <Grid item xs={12} lg={6}>
-    //           <Chart />
-    //         </Grid>
+  function getPublisherInfo(event) {
+    if (!isLandingClicked) getStarted(); // isLandingClicked is false, call the getStarted function
+    console.log(event.target);
+    setPublisher(event.target.value);
+    // console.log(publisherData);
+  }
 
-    //         <Grid item xs={12} lg={6}>
-    	      
-    //           <GameLarge />
-    //         </Grid>
+  var expandGames = event => {
+    //
+  };
 
-    //         <Grid item xs={6} lg={3} />
+  var expandNews = event => {
+    //
+  };
 
-    //         <Grid item xs={12} lg={3}>
-    //           <NewsSmall />
-    //         </Grid>
+  if (isLandingClicked) {
+    return (
+      <div className="app">
+        <div className={classes.root}>
+          <Grid container spacing={10}>
+            <Sidebar onClick={getPublisherInfo} />
+            <Grid container spacing={10} className={classes.inside}>
+              <Grid item className={classes.paper} xs={12}>
+                <Ticker />
+              </Grid>
 
-    //         <Grid item xs={12} lg={3}>
-    //           <GameSmall />
-    //         </Grid>
+              <Grid item xs={12} lg={6}>
+                <Chart />
+              </Grid>
 
-    //         <Grid item xs={6} lg={3} />
-    //       </Grid>
-    //     </Grid>
-    //   </div>
-	// </div>
+              <Grid item xs={12} lg={6}>
+                <GameLarge />
+              </Grid>
 
-	// ---------------Conditional Render for either landing page or main content---------------------
+              <Grid item xs={6} lg={3} />
 
-	<div className="app">
-	<div className={classes.root}>
-	  <Grid container spacing={10}>
-		<Sidebar />
-		<Grid container spacing={10} className={classes.inside}>
-			
-			<Grid item  lg={3} />
-		  <Grid item className={classes.paper} xs={12} lg={6}>
-			<LandingPage />
-		  </Grid>
-		</Grid>
-	  </Grid>
-	</div>
-  </div>
+              <Grid item xs={12} lg={3}>
+                <NewsSmall onClick={expandNews} data={publisherData} />
+              </Grid>
 
-  );
+              <Grid item xs={12} lg={3}>
+                <GameSmall onClick={expandGames} />
+              </Grid>
+
+              <Grid item xs={6} lg={3} />
+            </Grid>
+          </Grid>
+        </div>
+      </div>
+    );
+  } else {
+    // ---------------Conditional Render for either landing page or main content---------------------
+    return (
+      <div className="app">
+        <div className={classes.root}>
+          <Grid container spacing={10}>
+            <Sidebar onClick={getPublisherInfo} />
+            <Grid container spacing={10} className={classes.inside}>
+              <Grid item lg={3} />
+              <Grid item className={classes.paper} xs={12} lg={6}>
+                <LandingPage onClick={getStarted} />
+              </Grid>
+            </Grid>
+          </Grid>
+        </div>
+      </div>
+    );
+  }
 }
-export default App;
+
+export default AppLoader;
