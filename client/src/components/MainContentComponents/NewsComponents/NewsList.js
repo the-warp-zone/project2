@@ -41,12 +41,7 @@ const NewsList = props => {
 
   return (
     <div style={listStyle}>
-      <List className={classes.root}>
-        <Button variant="contained" size="small" color="default" style={bStyle}>
-          Close
-        </Button>
-        {newsItem}
-      </List>
+      <List className={classes.root}>{newsItem}</List>
     </div>
   );
 };

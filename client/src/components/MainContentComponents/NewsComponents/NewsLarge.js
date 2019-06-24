@@ -2,15 +2,26 @@ import React, { Component } from "react";
 import axios from "axios";
 import NewsList from "./NewsList";
 
-
 class NewsLarge extends Component {
   state = {
     newsList: []
   };
+
   componentDidMount() {
+    this.axiosCall(this.props.data);
+  }
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    if (this.props.data !== prevProps.data) {
+      this.axiosCall(this.props.data);
+    }
+  }
+  axiosCall(data) {
     axios({
       url:
-        "https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/NewsSearchAPI?autoCorrect=true&pageNumber=1&pageSize=10&q=Nintendo&safeSearch=false",
+        "https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/NewsSearchAPI?autoCorrect=true&pageNumber=1&pageSize=10&q=" +
+        data +
+        "&safeSearch=false",
       headers: {
         "X-RapidAPI-Host": "contextualwebsearch-websearch-v1.p.rapidapi.com",
         "X-RapidAPI-Key": "32a10d7338mshd41fd36d30be39cp1eec1ejsnd23f7aebd654"
