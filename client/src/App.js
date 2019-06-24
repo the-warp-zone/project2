@@ -68,7 +68,7 @@ function AppLoader() {
             <Sidebar onClick={getPublisherInfo} />
             <Grid container spacing={10} className={classes.inside}>
               <Grid item className={classes.paper} xs={12}>
-                <Ticker />
+                {/* <Ticker /> */}
               </Grid>
 
               <Grid item xs={12} lg={6}>
