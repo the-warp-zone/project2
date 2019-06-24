@@ -14,6 +14,8 @@ class Chart extends Component {
       url:
         "https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&apikey=6J7PBJ5E6ZV76KME&symbol=NTDOY"
     }).then(response => {
+      // pass the symbol as a prop?
+
       //console.log(response.data["Weekly Time Series"]);
       // console.log(responseValue);
       let obj = response.data["Weekly Time Series"];

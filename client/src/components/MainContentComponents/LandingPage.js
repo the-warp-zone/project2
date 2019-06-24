@@ -9,7 +9,6 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import LandingPic from "../../../src/src_images/sekiro.jpg";
 
-
 const useStyles = makeStyles({
   card: {
     width: "100%",
@@ -20,7 +19,7 @@ const useStyles = makeStyles({
   }
 });
 
-const LandingPage = () => {
+const LandingPage = props => {
   const classes = useStyles();
   const bStyle = {
     margin: "auto",
@@ -29,34 +28,40 @@ const LandingPage = () => {
   };
   return (
     <Card className={classes.card}>
-      
-        <CardMedia
-          className={classes.media}
-          image={LandingPic}
-          title="Fast Travel Stocks"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Fast Travel Stocks
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+      <CardMedia
+        className={classes.media}
+        image={LandingPic}
+        title="Fast Travel Stocks"
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="h2">
+          Fast Travel Stocks
+        </Typography>
+        <Typography variant="body2" color="textSecondary" component="p">
           Fast Travel Stock is an application that allows you to search up
-          specific video game developers stocks, news, and games. You can get started by clicking on the icon of the company or by
-          clicking the list icon to bring up the names of the publishers. Once you select your publisher, the stocks will be displayed with
-          clickable buttons for news, games, and about the publisher.
-          </Typography>
-        </CardContent>
-      
+          specific video game developers stocks, news, and games. You can get
+          started by clicking on the icon of the company or by clicking the list
+          icon to bring up the names of the publishers. Once you select your
+          publisher, the stocks will be displayed with clickable buttons for
+          news, games, and about the publisher.
+        </Typography>
+      </CardContent>
+
       <CardActions>
-      <Button variant="contained" size="small" color="default" style={bStyle}>
-        Get Started
-      </Button>
+        <Button
+          variant="contained"
+          size="small"
+          color="default"
+          style={bStyle}
+          onClick={props.onClick}
+        >
+          Get Started
+        </Button>
       </CardActions>
     </Card>
   );
 };
 export default LandingPage;
-
 
 // import React, {Component} from "react";
 // import Typography from "@material-ui/core/Typography";
@@ -87,6 +92,5 @@ export default LandingPage;
 //     );
 //     }
 // };
-
 
 // export default LandingPage;

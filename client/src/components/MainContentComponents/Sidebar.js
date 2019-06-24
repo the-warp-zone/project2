@@ -20,7 +20,6 @@ import SvgIcon from "../SideBarComponents/SVGIcon";
 import purple from "@material-ui/core/colors/purple";
 import grey from "@material-ui/core/colors/grey";
 
-
 const primary = purple[900];
 const secondary = grey[900];
 const third = purple[700];
@@ -95,7 +94,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function MiniDrawer() {
+var MiniDrawer = props => {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -161,35 +160,23 @@ export default function MiniDrawer() {
         <List>
           {// Where items are listed
           Publisher.map(company => (
-            <ListItem button key={company.name}>
-              <ListItemIcon>
+            <ListItem
+              button
+              key={company.name}
+              onClick={props.onClick}
+              value={company.name}
+            >
+              <ListItemIcon value={company.name}>
                 <SvgIcon data={company} />
-                {/* {index % 2 === 0 ? (
-                  <object
-                    type="image/svg+xml"
-                    data="./Assets/Images/EALogo.svg"
-                  />
-                ) : (
-                  <MailIcon />
-                )} */}
+                {/* Hm... this might need to be a component*/}
               </ListItemIcon>
               <ListItemText primary={company.name} />
             </ListItem>
           ))}
         </List>
-        {/* <Divider />
-        <List>
-          {// Where items are listed
-          ["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List> */}
       </Drawer>
     </div>
   );
-}
+};
+
+export default MiniDrawer;
