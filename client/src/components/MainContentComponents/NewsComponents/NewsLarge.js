@@ -17,6 +17,7 @@ class NewsLarge extends Component {
     }
   }
   axiosCall(data) {
+    if (data === "Sony") data = "Sony Interactive Entertainment";
     axios({
       url:
         "https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/NewsSearchAPI?autoCorrect=true&pageNumber=1&pageSize=10&q=" +
