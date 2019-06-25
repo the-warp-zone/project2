@@ -13,7 +13,7 @@ router.get("/results/", function(req, res) {
     // }
   })
     // use promise method to pass the burgers...
-    .then(function(dbBurger) {
+    .then(function(dbSurvey) {
       // into the main index, updating the page
       res.json(dbSurvey);
     });
