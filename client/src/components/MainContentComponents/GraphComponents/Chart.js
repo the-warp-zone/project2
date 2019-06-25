@@ -8,7 +8,7 @@ class Chart extends Component {
   state = {
     dataPoints: []
   };
-
+  
   componentDidMount() {
     this.axiosCall(this.props.data);
   }
@@ -39,7 +39,7 @@ class Chart extends Component {
     }
     axios({
       url:
-        "https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&apikey=6J7PBJ5E6ZV76KME&symbol=" +
+        "https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&apikey="+ process.env.REACT_APP_CHART_KEY +"P&symbol=" +
         stockTicker
     }).then(response => {
       // pass the symbol as a prop?

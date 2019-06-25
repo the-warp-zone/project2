@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const surveyRoutes = require("./survey");
 
-// Book routes
-router.use("/burger", surveyRoutes);
+router.use("/survey", surveyRoutes);
 
 module.exports = router;

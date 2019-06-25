@@ -26,7 +26,7 @@ class GameAxios extends Component {
       method: "POST",
       headers: {
         Accept: "application/json",
-        "user-key": "c1c717a3e484c33bb482bdb7f9fb7eb4"
+        "user-key":  process.env.REACT_APP_GAMES_KEY 
       },
       data:
         'fields name,published.name,published.first_release_date; sort popularity desc; where name = "' +

@@ -17,6 +17,7 @@ class NewsLarge extends Component {
     }
   }
   axiosCall(data) {
+    if (data === "Sony") data = "Sony Interactive Entertainment";
     axios({
       url:
         "https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/NewsSearchAPI?autoCorrect=true&pageNumber=1&pageSize=10&q=" +
@@ -24,7 +25,7 @@ class NewsLarge extends Component {
         "&safeSearch=false",
       headers: {
         "X-RapidAPI-Host": "contextualwebsearch-websearch-v1.p.rapidapi.com",
-        "X-RapidAPI-Key": "32a10d7338mshd41fd36d30be39cp1eec1ejsnd23f7aebd654"
+        "X-RapidAPI-Key": process.env.REACT_APP_NEWS_KEY 
       }
     })
       .then(response => {
@@ -66,6 +67,7 @@ class NewsLarge extends Component {
   }
 
   render() {
+    console.log(process.env.REACT_APP_NEWS_KEY );
     // const bStyle = {
     //   marginRight: "1%",
     //   marginTop: "17%",
