@@ -1,40 +1,40 @@
 const router = require("express").Router();
 var db = require("../../models");
-// get route -> index
-// router.get("/", function(req, res) {
-//   console.log("Hello")
-//   res.send("Request Recieved");
-// });
+//get route -> index
+router.get("/", function(req, res) {
+  console.log("Hello World: We are connected to DB");
+});
 
-router.get("/results/:publisher_name", function(req, res) {
+router.get("/results/", function(req, res) {
   // replace old function with sequelize function
-  db.Survey.findAll({ where: {
-    publisher_name: req.params.publisher_name
-  }
+  db.Survey.findAll({
+    // where: {
+    //   publisher_name: req.params.publisher_name
+    // }
   })
     // use promise method to pass the burgers...
     .then(function(dbSurvey) {
       // into the main index, updating the page
-      res.json(dbSurvey)
-      
-    })
+      res.json(dbSurvey);
+    });
 });
-router.put("/create", function(req, res) {
+router.put("/update/:publisher_name", function(req, res) {
   // replace old function with sequelize function
+  
   db.Survey.update(
-    req.body,{
+    {
+      yes_count: req.body.yes_count,
+      no_count: req.body.no_count
+    },
+    {
       where: {
-        publisher_name: req.body.publisher_name
+        publisher_name: req.params.publisher_name
       }
-    }
-  )
-    // use promise method to pass the burgers...
-    .then(function(dbSurvey) {
-      // into the main index, updating the page
-      res.json(dbSurvey)
-      
-    })
+    }).
+    then(function(dbSurvey) {
+      console.log(dbSurvey)
+    res.json(dbSurvey);
+  });
 });
-
 
 module.exports = router;

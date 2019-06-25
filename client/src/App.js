@@ -71,18 +71,23 @@ function AppLoader() {
   }
 
   function getPublisherInfo(event) {
-    if (!isLandingClicked) getStarted(); // isLandingClicked is false, call the getStarted function
-    var publisher = event.currentTarget.getAttribute("value");
+    if (!isLandingClicked){
+      getStarted(); // isLandingClicked is false, call the getStarted function
+    }
+    else {
+     var publisher = event.currentTarget.getAttribute("value");
     setPublisher(publisher);
     voteOptions(publisher);
-    // API call for votes
+    // API call for votes 
+    }
+    
 
   }
 
   var voteOptions = (param) => {
     axios({
       url:
-        "/api/survey/results/"+param,
+        "/api/survey/results/",
       method: "GET",
       headers: {
         Accept: "application/json"
@@ -99,9 +104,55 @@ function AppLoader() {
 
   }
 
-  var putVote = (event) => {
+  var setVote = (event) => {
     //
-    console.log(event.currentTarget.text);
+    
+    var newCountYes = 0;
+    var newCountNo = 0;
+    console.log("Before Y: " + yesCount);
+    console.log("Before N: " + noCount);
+    var buttonVal = event.currentTarget.getAttribute("value");
+    if(buttonVal === "Yes") {
+      newCountYes = yesCount + 1;
+      
+      setYes(newCountYes);
+    } else if (buttonVal === "No") {
+      newCountNo = noCount + 1;
+      
+      setNo(newCountNo);
+    }
+    
+    console.log("After Y: " + newCountYes);
+    console.log("After N: " + newCountNo);
+    putVote(publisherData, newCountYes, newCountNo);
+  }
+
+  var putVote = (param, countYes, countNo) => {
+    console.log(param);
+    axios({
+      url:
+        "/api/survey/update/" + param,
+      method: "PUT",
+      headers: {
+        Accept: "application/json"
+      },
+      data: {
+        yes_count: countYes,
+        no_count: countNo
+      }
+    })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(err => {
+        console.error(err);
+      });
+    // axios.post('/api/survey/create/'+param, {yes_count: yesCount, no_count: noCount})
+    // .then(function(response){
+    //   console.log(response.data)})
+    //   .catch(err => {
+    //     console.error(err);
+    //   });
   }
 
   var expandGames = event => {
@@ -147,7 +198,7 @@ function AppLoader() {
               </Grid>
 
               <Grid item className={classes.paper} xs={12}>
-                <Ticker yes={yesCount} no={noCount} onClick={putVote}/>
+                <Ticker yes={yesCount} no={noCount} onClick={setVote}/>
               </Grid>
 
               <Grid item xs={6} lg={3} />

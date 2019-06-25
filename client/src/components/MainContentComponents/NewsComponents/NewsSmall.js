@@ -61,7 +61,7 @@ const NewsSmall = props => {
           {props.data} News
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
-          Checkout recent news for {props.data}
+          Checkout out recent news for {props.data} from the web.
         </Typography>
       </CardContent>
       <CardActions>
