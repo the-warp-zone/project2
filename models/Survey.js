@@ -1,13 +1,17 @@
 module.exports = function(sequelize, DataTypes) {
-  var Stocks = sequelize.define("publisher_stock", {
-    Publisher_name: {
+  var Survey = sequelize.define("Survey", {
+    publisher_name: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    Price: {
+    yes_count: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    no_count: {
       type: DataTypes.INTEGER,
       allowNull: false
     }
   });
-  return Stocks;
+  return Survey;
 };
