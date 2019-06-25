@@ -6,9 +6,11 @@ var db = require("../../models");
 //   res.send("Request Recieved");
 // });
 
-router.get("/results", function(req, res) {
+router.get("/results/:publisher_name", function(req, res) {
   // replace old function with sequelize function
-  db.Survey.findAll({
+  db.Survey.findAll({ where: {
+    publisher_name: req.params.publisher_name
+  }
   })
     // use promise method to pass the burgers...
     .then(function(dbSurvey) {
