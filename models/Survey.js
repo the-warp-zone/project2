@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var Survey = sequelize.define("FTS_survey", {
+  var Survey = sequelize.define("Survey", {
     publisher_name: {
       type: DataTypes.STRING,
       allowNull: false

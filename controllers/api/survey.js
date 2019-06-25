@@ -6,7 +6,7 @@ var db = require("../../models");
 //   res.send("Request Recieved");
 // });
 
-router.get("/survey", function(req, res) {
+router.get("/results", function(req, res) {
   // replace old function with sequelize function
   db.Survey.findAll({
   })
@@ -17,5 +17,22 @@ router.get("/survey", function(req, res) {
       
     })
 });
+router.put("/create", function(req, res) {
+  // replace old function with sequelize function
+  db.Survey.update(
+    req.body,{
+      where: {
+        publisher_name: req.body.publisher_name
+      }
+    }
+  )
+    // use promise method to pass the burgers...
+    .then(function(dbSurvey) {
+      // into the main index, updating the page
+      res.json(dbSurvey)
+      
+    })
+});
+
 
 module.exports = router;
