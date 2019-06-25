@@ -10,9 +10,14 @@ import Ticker from "./components/MainContentComponents/Tickercomponents/TickerMa
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import "./app.css";
+import purple from "@material-ui/core/colors/purple";
+import Image from "./src_images/BackGroundImage2.png";
+
+const primary = purple[900];
 
 const useStyles = makeStyles(theme => ({
   root: {
+    backgroundImage: `url(${Image})`,
     flexGrow: 1
   },
   inside: {
@@ -67,9 +72,7 @@ function AppLoader() {
           <Grid container spacing={10}>
             <Sidebar onClick={getPublisherInfo} />
             <Grid container spacing={10} className={classes.inside}>
-              <Grid item className={classes.paper} xs={12}>
-                <Ticker />
-              </Grid>
+              
 
               <Grid item xs={12} lg={6}>
                 <Chart data={publisherData} />
@@ -92,6 +95,10 @@ function AppLoader() {
 
               <Grid item xs={12} lg={3}>
                 <GameSmall onClick={expandGames} data={publisherData} />
+              </Grid>
+
+              <Grid item className={classes.paper} xs={12}>
+                <Ticker />
               </Grid>
 
               <Grid item xs={6} lg={3} />
