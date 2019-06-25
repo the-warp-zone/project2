@@ -32,14 +32,14 @@ var TickerComp = (props) => {
           component="h5"
           style={{ textAlign: "center" }}
         >
-            Would you purchase stock for this Publisher? 
+            Would you purchase stock from this Publisher? 
         </Typography>
           
-        <Button variant="contained" size="large" color="primary" count={props.yes} className={classes.margin} onClick={props.onClick}>
+        <Button value="Yes" variant="contained" size="large" color="primary" count={props.yes} className={classes.margin} onClick={props.onClick}>
               Yes
         </Button>
 
-        <Button variant="contained" size="large" color="primary" count={props.no}className={classes.margin} onClick={props.onClick}>
+        <Button value="No" variant="contained" size="large" color="primary" count={props.no}className={classes.margin} onClick={props.onClick}>
               No
         </Button>
       </Paper>
