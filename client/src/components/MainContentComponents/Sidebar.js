@@ -88,7 +88,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center"
   },
   content: {
-    backgroundColor: third,
+    color: primary,
     flexGrow: 1,
     padding: theme.spacing(18.7)
   }
