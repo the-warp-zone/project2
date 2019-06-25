@@ -17,8 +17,12 @@ var axios = require("axios");
 const primary = purple[900];
 
 const useStyles = makeStyles(theme => ({
-  root: {
+  image: {
     backgroundImage: `url(${Image})`,
+    backgroundRepeat: "repeat",
+    flexGrow: 1
+  },
+  root: {
     flexGrow: 1
   },
   inside: {
@@ -167,6 +171,7 @@ function AppLoader() {
 
   if (isLandingClicked) {
     return (
+    <div className={classes.image}>
       <div className="app">
         <div className={classes.root}>
           <Grid container spacing={10}>
@@ -206,10 +211,12 @@ function AppLoader() {
           </Grid>
         </div>
       </div>
+    </div>
     );
   } else {
     // ---------------Conditional Render for either landing page or main content---------------------
     return (
+    <div className={classes.image}>
       <div className="app">
         <div className={classes.root}>
           <Grid container spacing={10}>
@@ -223,6 +230,7 @@ function AppLoader() {
           </Grid>
         </div>
       </div>
+    </div>
     );
   }
 }
