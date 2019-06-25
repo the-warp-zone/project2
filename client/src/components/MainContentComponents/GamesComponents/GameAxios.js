@@ -69,7 +69,7 @@ class GameAxios extends Component {
 
   render() {
     //console.log(this.state.gamesList);
-    console.log(this.props.data);
+    // console.log(this.props.data);
     return (
       <div>
         <GameLarge data={this.state.gamesList} />
