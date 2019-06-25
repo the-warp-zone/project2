@@ -18,18 +18,14 @@ router.get("/results/", function(req, res) {
       res.json(dbSurvey);
     });
 });
-router.put("/update/:publisher_name", function(req, res) {
+router.post("/create/:publisher_name", function(req, res) {
   // replace old function with sequelize function
   
-  db.Survey.update(
+  db.Survey.create(
     {
+      publisher_name: req.params.publisher_name,
       yes_count: req.body.yes_count,
       no_count: req.body.no_count
-    },
-    {
-      where: {
-        publisher_name: req.params.publisher_name
-      }
     }).
     then(function(dbSurvey) {
       console.log(dbSurvey)

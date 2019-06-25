@@ -6,7 +6,7 @@ import NewsLarge from "./components/MainContentComponents/NewsComponents/NewsLar
 import GameAxios from "./components/MainContentComponents/GamesComponents/GameAxios";
 import GameSmall from "./components/MainContentComponents/GamesComponents/GameSmall";
 import NewsSmall from "./components/MainContentComponents/NewsComponents/NewsSmall";
-import Ticker from "./components/MainContentComponents/Tickercomponents/TickerMain";
+import Poll from "./components/MainContentComponents/PollComponents/Poll";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import "./app.css";
@@ -37,24 +37,6 @@ const useStyles = makeStyles(theme => ({
 // isLandingPage clicked
 // else Main hub
 
-// var options = { method: 'GET',
-//   url: 'http://localhost:3001/api/survey/results',
-//   headers: 
-//    { 'cache-control': 'no-cache',
-//      Connection: 'keep-alive',
-//      'accept-encoding': 'gzip, deflate',
-//      Host: 'localhost:3001',
-//      'Postman-Token': '5929d8c9-c3e9-4add-a639-013b57d76aa6,bd6af312-030f-4d6a-82ff-3b152dbffd39',
-//      'Cache-Control': 'no-cache',
-//      Accept: '/',
-//      'User-Agent': 'PostmanRuntime/7.15.0' } };
-
-// request(options, function (error, response, body) {
-//   if (error) throw new Error(error);
-
-//   console.log(body);
-// });
-
 // What about the sidebar?
 function AppLoader() {
   const classes = useStyles();
@@ -74,14 +56,10 @@ function AppLoader() {
     if (!isLandingClicked){
       getStarted(); // isLandingClicked is false, call the getStarted function
     }
-    else {
      var publisher = event.currentTarget.getAttribute("value");
     setPublisher(publisher);
     voteOptions(publisher);
     // API call for votes 
-    }
-    
-
   }
 
   var voteOptions = (param) => {
@@ -105,19 +83,20 @@ function AppLoader() {
   }
 
   var setVote = (event) => {
-    //
     
+    setYes(0);
+    setNo(0);
     var newCountYes = 0;
     var newCountNo = 0;
     console.log("Before Y: " + yesCount);
     console.log("Before N: " + noCount);
     var buttonVal = event.currentTarget.getAttribute("value");
     if(buttonVal === "Yes") {
-      newCountYes = yesCount + 1;
+      newCountYes =  newCountYes + 1;
       
       setYes(newCountYes);
     } else if (buttonVal === "No") {
-      newCountNo = noCount + 1;
+      newCountNo = newCountNo + 1;
       
       setNo(newCountNo);
     }
@@ -131,14 +110,14 @@ function AppLoader() {
     console.log(param);
     axios({
       url:
-        "/api/survey/update/" + param,
-      method: "PUT",
+        "/api/survey/create/" + param,
+      method: "POST",
       headers: {
         Accept: "application/json"
       },
       data: {
         yes_count: countYes,
-        no_count: countNo
+        no_count: countNo 
       }
     })
       .then(response => {
@@ -197,11 +176,13 @@ function AppLoader() {
                 <GameSmall onClick={expandGames} data={publisherData} />
               </Grid>
 
-              <Grid item className={classes.paper} xs={12}>
-                <Ticker yes={yesCount} no={noCount} onClick={setVote}/>
-              </Grid>
+              <Grid item xs={12} lg={3} />
 
-              <Grid item xs={6} lg={3} />
+              
+              <Grid item xs={12} lg={3} />
+              <Grid item className={classes.paper} xs={12} lg={6}>
+                <Poll yes={yesCount} no={noCount} onClick={setVote}/>
+              </Grid>
             </Grid>
           </Grid>
         </div>

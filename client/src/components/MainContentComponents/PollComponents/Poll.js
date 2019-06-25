@@ -4,7 +4,6 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import blue from "@material-ui/core/colors/blue";
-import "./ticker.css";
 
 const color = blue[800];
 
@@ -16,7 +15,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-var TickerComp = (props) => {
+var PollComp = (props) => {
   const classes = useStyles();
      
   return (
@@ -47,5 +46,5 @@ var TickerComp = (props) => {
   );
 }
 
-export default TickerComp;
+export default PollComp;
 
