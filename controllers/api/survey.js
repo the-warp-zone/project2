@@ -1,5 +1,6 @@
 const router = require("express").Router();
 var db = require("../../models");
+<<<<<<< HEAD
 // get route -> index
 router.get("/", function(req, res) {
   //do things here for other routes
@@ -12,10 +13,24 @@ router.get("/burgers", function(req, res) {
     include: [db.Customer],
     // Here we specify we want to return our burgers in ordered by ascending burger_name
     order: [["burger_name", "ASC"]]
+=======
+//get route -> index
+router.get("/", function(req, res) {
+  console.log("Hello World: We are connected to DB");
+});
+
+router.get("/results/", function(req, res) {
+  // replace old function with sequelize function
+  db.Survey.findAll({
+    // where: {
+    //   publisher_name: req.params.publisher_name
+    // }
+>>>>>>> e97cd1659b06c4814c8cb62a7c3297d6969c4f78
   })
     // use promise method to pass the burgers...
     .then(function(dbBurger) {
       // into the main index, updating the page
+<<<<<<< HEAD
       var hbsObject = {
         burger: dbBurger
       };
@@ -79,4 +94,28 @@ router.put("/burgers/update", function(req, res) {
   }
 });
 
+=======
+      res.json(dbSurvey);
+    });
+});
+router.put("/update/:publisher_name", function(req, res) {
+  // replace old function with sequelize function
+  
+  db.Survey.update(
+    {
+      yes_count: req.body.yes_count,
+      no_count: req.body.no_count
+    },
+    {
+      where: {
+        publisher_name: req.params.publisher_name
+      }
+    }).
+    then(function(dbSurvey) {
+      console.log(dbSurvey)
+    res.json(dbSurvey);
+  });
+});
+
+>>>>>>> e97cd1659b06c4814c8cb62a7c3297d6969c4f78
 module.exports = router;
