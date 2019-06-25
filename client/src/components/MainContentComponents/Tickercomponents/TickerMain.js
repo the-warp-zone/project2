@@ -1,80 +1,51 @@
-// import React, { Component } from "react";
-// import Paper from "@material-ui/core/Paper";
-// import Typography from "@material-ui/core/Typography";
-// import axios from "axios";
-// import "./ticker.css";
+import React, { Component } from "react";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+import blue from "@material-ui/core/colors/blue";
+import "./ticker.css";
 
-// class TickerComp extends Component {
-//   state = {
-//     todaysPrice: "",
-//     ticker: ""
-//   };
-//   componentDidMount() {
-//     this.axiosCall(this.props.data);
-//   }
-//   componentDidUpdate(prevProps) {
-//     // Typical usage (don't forget to compare props):
-//     if (this.props.data !== prevProps.data) {
-//       this.axiosCall(this.props.data);
-//     }
-//   }
-//   axiosCall(data) {
-//     var stockTicker = "";
-//     switch (data) {
-//       case "Nintendo":
-//         stockTicker = "NTDOY";
-//         break;
-//       case "Sony":
-//         stockTicker = "SNE";
-//         break;
-//       case "Activision":
-//         stockTicker = "ATVI";
-//         break;
-//       case "Take-Two Interactive":
-//         stockTicker = "TTWO";
-//         break;
-//       case "Ubisoft":
-//         stockTicker = "UBSFY";
-//         break;
-//     }
-//     this.setState({ ticker: stockTicker });
-//     axios({
-//       url:
-//         "https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=" +
-//         stockTicker +
-//         "&apikey=W6K6C59BPUWQ6KBK"
-//     }).then(response => {
-//       console.log(response);
-//       console.log(response.data);
-//       let obj = response.data["Weekly Time Series"];
-//       let dateObj = Object.keys(obj);
-//       let todaysDateKey = dateObj[0];
-//       let todaysPrice = response.data["Weekly Time Series"][todaysDateKey];
-//       let todaysClosingPrice = todaysPrice["4. close"];
-//       console.log(todaysClosingPrice);
-//       this.setState({ todaysPrice: todaysClosingPrice });
-//     });
-//   }
+const color = blue[800];
 
-//   render() {
-//     return (
-//       <div className="ticker">
-//         <Paper
-//           style={{
-//             padding: 10
-//           }}
-//         >
-//           <Typography
-//             variant="h6"
-//             component="h6"
-//             style={{ textAlign: "center" }}
-//           >
-//             {this.props.data} ({this.state.ticker}) || ${this.state.todaysPrice}
-//           </Typography>
-//         </Paper>
-//       </div>
-//     );
-//   }
-// }
+const useStyles = makeStyles(theme => ({
+  margin: {
+    margin: theme.spacing(1),
+    backgroundColor: color  
+  }
+}));
 
-// export default TickerComp;
+
+export default function TickerComp() {
+  const classes = useStyles();
+     
+  return (
+
+    <div className="questionare">
+      <Paper
+        style={{
+          padding: 10
+        }}
+      >
+        <Typography
+          variant="h4"
+          component="h5"
+          style={{ textAlign: "center" }}
+        >
+            Would you purchase stock for this Publisher? 
+        </Typography>
+          
+        <Button variant="contained" size="large" color="primary" className={classes.margin}>
+              Yes
+        </Button>
+
+        <Button variant="contained" size="large" color="primary" className={classes.margin}>
+              No
+        </Button>
+      </Paper>
+    </div>
+  );
+}
+
+
+
