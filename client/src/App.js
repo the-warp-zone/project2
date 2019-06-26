@@ -60,6 +60,7 @@ function AppLoader() {
     }
       var publisher = event.currentTarget.getAttribute("value");
       setPublisher(publisher);
+      if(isButtonClicked) setClicked(false);
   }
 
   var voteOptions = (param) => {
