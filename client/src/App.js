@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Sidebar from "./components/MainContentComponents/Sidebar";
 import LandingPage from "./components/MainContentComponents/LandingPage";
 import Chart from "./components/MainContentComponents/GraphComponents/Chart";
@@ -9,12 +9,11 @@ import NewsSmall from "./components/MainContentComponents/NewsComponents/NewsSma
 import Poll from "./components/MainContentComponents/PollComponents/Poll";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import "./app.css";
-import purple from "@material-ui/core/colors/purple";
 import Image from "./src_images/BackGroundImage2.png";
+import "./app.css";
 var axios = require("axios");
 
-const primary = purple[900];
+
 
 const useStyles = makeStyles(theme => ({
   image: {
@@ -43,8 +42,6 @@ function AppLoader() {
   const [isButtonClicked, setClicked] = React.useState(false);
   const [publisherData, setPublisher] = React.useState("");
   const [whichList, setList] = React.useState(true);
-  const [yesCount, setYes] = React.useState(0);
-  const [noCount, setNo] = React.useState(0);
   const [totalYesCount, setYesTotal] = React.useState(0);
   const [totalNoCount, setNoTotal] = React.useState(0);
 
@@ -95,17 +92,13 @@ function AppLoader() {
 
   var setVote = (event) => {
     setClicked(true);
-    setYes(0);
-    setNo(0);
     var newCountYes = 0;
     var newCountNo = 0;
     var buttonVal = event.currentTarget.getAttribute("value");
     if(buttonVal === "Yes") {
       newCountYes =  newCountYes + 1;
-      setYes(newCountYes);
     } else if (buttonVal === "No") {
       newCountNo = newCountNo + 1;
-      setNo(newCountNo);
     }
     putVote(publisherData, newCountYes, newCountNo);
     // getPollResults();

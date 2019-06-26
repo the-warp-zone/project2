@@ -36,6 +36,8 @@ class Chart extends Component {
       case "Ubisoft":
         stockTicker = "UBSFY";
         break;
+      default:
+        stockTicker = "NTDOY";
     }
     axios({
       url:
