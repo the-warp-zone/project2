@@ -22,8 +22,6 @@ import grey from "@material-ui/core/colors/grey";
 
 const primary = purple[900];
 const secondary = grey[900];
-const third = purple[700];
-//const fourth = grey[200];
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({

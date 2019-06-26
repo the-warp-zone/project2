@@ -2,7 +2,6 @@ import React from "react";
 import NewsListItem from "./NewsListItem";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
-import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -22,13 +21,6 @@ const NewsList = props => {
   const listStyle = {
     width: "100%",
     height: "100%"
-  };
-  const bStyle = {
-    marginRight: "5px",
-    marginTop: "5px",
-    float: "right",
-    background: "linear-gradient(45deg, #0a9df1 , #62058d )",
-    color: "white"
   };
   const classes = useStyles();
   var id = 0;

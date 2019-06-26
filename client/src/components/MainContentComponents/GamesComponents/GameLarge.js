@@ -5,7 +5,6 @@ import { withStyles } from "@material-ui/core/styles";
 import TableCell from "@material-ui/core/TableCell";
 import Paper from "@material-ui/core/Paper";
 import { AutoSizer, Column, Table } from "react-virtualized";
-import Button from "@material-ui/core/Button";
 
 const styles = theme => ({
   flexContainer: {
@@ -142,13 +141,6 @@ const ReactVirtualizedTable = ({ data }) => {
   for (let i = 0; i < gameList.length; i += 1) {
     rows.push(createData(i, gameList[i][0], gameList[i][1]));
   }
-  const bStyle = {
-    marginRight: "1%",
-    marginTop: "1%",
-    float: "right",
-    background: "linear-gradient(45deg, #0a9df1 , #62058d )",
-    color: "white"
-  };
   return (
     <Paper
       style={{
