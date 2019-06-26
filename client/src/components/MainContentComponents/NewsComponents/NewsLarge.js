@@ -29,12 +29,6 @@ class NewsLarge extends Component {
       }
     })
       .then(response => {
-        //console.log(response.data);
-
-        // let titles = this.getTitles(response.data.value);
-        // let descriptions = this.getDescriptions(response.data.value);
-        // let mixed = this.getFinalList(titles, descriptions);
-        //console.log(response.data.value[0]); //.url, .title, .description, you are either .yeeted or .yooted
         this.setState({ newsList: response.data.value });
       })
       .catch(err => {
@@ -67,14 +61,6 @@ class NewsLarge extends Component {
   }
 
   render() {
-    console.log(process.env.REACT_APP_NEWS_KEY );
-    // const bStyle = {
-    //   marginRight: "1%",
-    //   marginTop: "17%",
-    //   float: "right",
-    //   background: "linear-gradient(45deg, #0a9df1 , #62058d )",
-    //   color: "white"
-    // };
     return (
       <div>
         <NewsList data={this.state.newsList} />
