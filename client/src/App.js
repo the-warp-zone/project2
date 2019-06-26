@@ -20,6 +20,7 @@ const useStyles = makeStyles(theme => ({
   image: {
     backgroundImage: `url(${Image})`,
     backgroundRepeat: "repeat",
+    height: "100%",
     flexGrow: 1
   },
   root: {
@@ -36,12 +37,6 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-// Change this to Class
-// state
-// isLandingPage clicked
-// else Main hub
-
-// What about the sidebar?
 function AppLoader() {
   const classes = useStyles();
   const [isLandingClicked, setLanding] = React.useState(false);
@@ -63,10 +58,8 @@ function AppLoader() {
     if (!isLandingClicked){
       getStarted(); // isLandingClicked is false, call the getStarted function
     }
-     var publisher = event.currentTarget.getAttribute("value");
-    setPublisher(publisher);
-    // voteOptions(publisher);
-    // API call for votes 
+      var publisher = event.currentTarget.getAttribute("value");
+      setPublisher(publisher);
   }
 
   var voteOptions = (param) => {
@@ -79,8 +72,6 @@ function AppLoader() {
       }
     })
       .then(response => {
-        
-        console.log(response.data);
         setCounts(response.data);
         
       })
@@ -97,8 +88,6 @@ function AppLoader() {
       if(arr[i].yes_count === 1) totalYes++;
       else if(arr[i].no_count === 1) totalNo++;
     }
-    console.log("Total Yes: " + totalYes);
-    console.log("Total No: " + totalNo);
     setYesTotal(totalYes);
     setNoTotal(totalNo);
   }
@@ -109,27 +98,19 @@ function AppLoader() {
     setNo(0);
     var newCountYes = 0;
     var newCountNo = 0;
-    console.log("Before Y: " + yesCount);
-    console.log("Before N: " + noCount);
     var buttonVal = event.currentTarget.getAttribute("value");
     if(buttonVal === "Yes") {
       newCountYes =  newCountYes + 1;
-      
       setYes(newCountYes);
     } else if (buttonVal === "No") {
       newCountNo = newCountNo + 1;
-      
       setNo(newCountNo);
     }
-    
-    console.log("After Y: " + newCountYes);
-    console.log("After N: " + newCountNo);
     putVote(publisherData, newCountYes, newCountNo);
     // getPollResults();
   }
 
   var putVote = (param, countYes, countNo) => {
-    console.log(param);
     axios({
       url:
         "/api/survey/create/" + param,
@@ -143,7 +124,6 @@ function AppLoader() {
       }
     })
       .then(response => {
-        console.log(response);
         // getPollResults();
         voteOptions(publisherData);
       })
@@ -170,34 +150,24 @@ function AppLoader() {
           <Grid container spacing={10}>
             <Sidebar onClick={getPublisherInfo} />
             <Grid container spacing={10} className={classes.inside}>
-              
-
               <Grid item xs={12} lg={6}>
                 <Chart data={publisherData} />
               </Grid>
-
               <Grid item xs={12} lg={6}>
-                {/* {Might want to make this conditional} */}
                 {whichList === true ? (
                   <GameAxios data={publisherData} />
                 ) : (
                   <NewsLarge data={publisherData} />
                 )}
               </Grid>
-
               <Grid item xs={6} lg={3} />
-
               <Grid item xs={12} lg={3}>
                 <NewsSmall onClick={expandNews} data={publisherData} />
               </Grid>
-
               <Grid item xs={12} lg={3}>
                 <GameSmall onClick={expandGames} data={publisherData} />
               </Grid>
-
-              <Grid item xs={12} lg={3} />
-
-              
+              <Grid item xs={12} lg={3} />            
               <Grid item xs={12} lg={3} />
               <Grid item className={classes.paper} xs={12} lg={6}>
                 <Poll isButtonClicked={isButtonClicked} yes={totalYesCount} no={totalNoCount} onClick={setVote}/>

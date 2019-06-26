@@ -30,12 +30,10 @@ var PollComp = (props) => {
             style={{ textAlign: "center" }}
           >
               Would you purchase stock from this Publisher? 
-          </Typography>
-            
+          </Typography> 
           <Button value="Yes" variant="contained" size="large" color="primary" count={props.yes} className={classes.margin} onClick={props.onClick}>
                 Yes
           </Button>
-
           <Button value="No" variant="contained" size="large" color="primary" count={props.no}className={classes.margin} onClick={props.onClick}>
                 No
           </Button>
@@ -52,15 +50,13 @@ var PollComp = (props) => {
             <Typography
             variant="h4"
             component="h5"
-            style={{ textAlign: "center" }}
-          >
+            style={{ textAlign: "center" }}>
               Would you purchase stock from this Publisher? 
           </Typography>
           <Typography
             variant="h4"
             component="h5"
-            style={{ textAlign: "center" }}
-          >
+            style={{ textAlign: "center" }}>
               {props.yes} Other people said yes, {props.no} people said No
           </Typography>   
         </Paper>
