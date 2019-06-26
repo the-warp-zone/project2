@@ -41,10 +41,13 @@ const useStyles = makeStyles(theme => ({
 function AppLoader() {
   const classes = useStyles();
   const [isLandingClicked, setLanding] = React.useState(false);
+  const [isButtonClicked, setClicked] = React.useState(false);
   const [publisherData, setPublisher] = React.useState("");
   const [whichList, setList] = React.useState(true);
   const [yesCount, setYes] = React.useState(0);
   const [noCount, setNo] = React.useState(0);
+  const [totalYesCount, setYesTotal] = React.useState(0);
+  const [totalNoCount, setNoTotal] = React.useState(0);
 
   function getStarted() {
     setLanding(true);
@@ -58,23 +61,24 @@ function AppLoader() {
     }
      var publisher = event.currentTarget.getAttribute("value");
     setPublisher(publisher);
-    voteOptions(publisher);
+    // voteOptions(publisher);
     // API call for votes 
   }
 
   var voteOptions = (param) => {
     axios({
       url:
-        "/api/survey/results/",
+        "/api/survey/results/" + param,
       method: "GET",
       headers: {
         Accept: "application/json"
       }
     })
       .then(response => {
-        console.log(response.data[0]);
-        setYes(response.data[0].yes_count);
-        setNo(response.data[0].no_count);
+        
+        console.log(response.data);
+        setCounts(response.data);
+        
       })
       .catch(err => {
         console.error(err);
@@ -82,8 +86,21 @@ function AppLoader() {
 
   }
 
+  var setCounts = (arr) => {
+    let totalYes = 0;
+    let totalNo = 0;
+    for(let i = 0; i < arr.length; i++){
+      if(arr[i].yes_count === 1) totalYes++;
+      else if(arr[i].no_count === 1) totalNo++;
+    }
+    console.log("Total Yes: " + totalYes);
+    console.log("Total No: " + totalNo);
+    setYesTotal(totalYes);
+    setNoTotal(totalNo);
+  }
+
   var setVote = (event) => {
-    
+    setClicked(true);
     setYes(0);
     setNo(0);
     var newCountYes = 0;
@@ -104,6 +121,7 @@ function AppLoader() {
     console.log("After Y: " + newCountYes);
     console.log("After N: " + newCountNo);
     putVote(publisherData, newCountYes, newCountNo);
+    // getPollResults();
   }
 
   var putVote = (param, countYes, countNo) => {
@@ -122,16 +140,12 @@ function AppLoader() {
     })
       .then(response => {
         console.log(response);
+        // getPollResults();
+        voteOptions(publisherData);
       })
       .catch(err => {
         console.error(err);
       });
-    // axios.post('/api/survey/create/'+param, {yes_count: yesCount, no_count: noCount})
-    // .then(function(response){
-    //   console.log(response.data)})
-    //   .catch(err => {
-    //     console.error(err);
-    //   });
   }
 
   var expandGames = event => {
@@ -181,7 +195,7 @@ function AppLoader() {
               
               <Grid item xs={12} lg={3} />
               <Grid item className={classes.paper} xs={12} lg={6}>
-                <Poll yes={yesCount} no={noCount} onClick={setVote}/>
+                <Poll isButtonClicked={isButtonClicked} yes={totalYesCount} no={totalNoCount} onClick={setVote}/>
               </Grid>
             </Grid>
           </Grid>

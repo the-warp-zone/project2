@@ -17,33 +17,57 @@ const useStyles = makeStyles(theme => ({
 
 var PollComp = (props) => {
   const classes = useStyles();
-     
-  return (
+  if(props.isButtonClicked === false) {
+    return (
+      <div>
+        <Paper
+          style={{
+            padding: 10
+          }}>
+          <Typography
+            variant="h4"
+            component="h5"
+            style={{ textAlign: "center" }}
+          >
+              Would you purchase stock from this Publisher? 
+          </Typography>
+            
+          <Button value="Yes" variant="contained" size="large" color="primary" count={props.yes} className={classes.margin} onClick={props.onClick}>
+                Yes
+          </Button>
 
-    <div className="questionare">
+          <Button value="No" variant="contained" size="large" color="primary" count={props.no}className={classes.margin} onClick={props.onClick}>
+                No
+          </Button>
+        </Paper>
+      </div>
+    );
+  } else {
+    return(
+      <div>
       <Paper
-        style={{
-          padding: 10
-        }}
-      >
-        <Typography
-          variant="h4"
-          component="h5"
-          style={{ textAlign: "center" }}
-        >
-            Would you purchase stock from this Publisher? 
-        </Typography>
-          
-        <Button value="Yes" variant="contained" size="large" color="primary" count={props.yes} className={classes.margin} onClick={props.onClick}>
-              Yes
-        </Button>
+          style={{
+            padding: 10
+          }}>
+            <Typography
+            variant="h4"
+            component="h5"
+            style={{ textAlign: "center" }}
+          >
+              Would you purchase stock from this Publisher? 
+          </Typography>
+          <Typography
+            variant="h4"
+            component="h5"
+            style={{ textAlign: "center" }}
+          >
+              {props.yes} Other people said yes, {props.no} people said No
+          </Typography>   
+        </Paper>
+      </div>
+    )
+  }
 
-        <Button value="No" variant="contained" size="large" color="primary" count={props.no}className={classes.margin} onClick={props.onClick}>
-              No
-        </Button>
-      </Paper>
-    </div>
-  );
 }
 
 export default PollComp;
