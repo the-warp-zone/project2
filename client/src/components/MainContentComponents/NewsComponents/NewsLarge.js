@@ -1,14 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
-// import CircularProgress from '@material-ui/core/CircularProgress';
-// import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Spinner from "../../../src_images/Spinner.gif"
 import NewsList from "./NewsList";
-
-// const useStyles = makeStyles(theme => ({
-//   progress: {
-//     margin: theme.spacing(2),
-//   },
-// }));
 
 class NewsLarge extends Component {
   state = {
@@ -33,7 +27,7 @@ class NewsLarge extends Component {
         "&safeSearch=false",
       headers: {
         "X-RapidAPI-Host": "contextualwebsearch-websearch-v1.p.rapidapi.com",
-        "X-RapidAPI-Key": process.env.REACT_APP_NEWS_KEY 
+        "X-RapidAPI-Key": process.env.REACT_APP_NEWS_KEY
       }
     })
       .then(response => {
@@ -67,15 +61,25 @@ class NewsLarge extends Component {
     }
     return a;
   }
-
   render() {
-    // const classes = useStyles();
-    return (
-      <div>
-        {/* <CircularProgress className={classes.progress} /> */}
-        <NewsList data={this.state.newsList} />
-      </div>
-    );
+    if (this.state.newsList < 1) {
+      return (
+        <div>
+          <Paper>
+            <img src={Spinner}></img>
+          </Paper>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <NewsList data={this.state.newsList} />
+        </div>
+      );
+    }
   }
 }
+
 export default NewsLarge;
+
+
