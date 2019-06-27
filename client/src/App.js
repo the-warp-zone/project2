@@ -19,8 +19,14 @@ const useStyles = makeStyles(theme => ({
   image: {
     backgroundImage: `url(${Image})`,
     backgroundRepeat: "repeat",
-    height: "100%",
-    flexGrow: 1
+     paddingTop: "2%"
+  },
+  landing: {
+    backgroundImage: `url(${Image})`,
+    backgroundRepeat: "repeat",
+    paddingTop: "2%",
+    // paddingBottom: "15%"
+    
   },
   root: {
     flexGrow: 1
@@ -138,58 +144,69 @@ function AppLoader() {
 
   if (isLandingClicked) {
     return (
-    <div className={classes.image}>
-      <div className="app">
-        <div className={classes.root}>
-          <Grid container spacing={10}>
-            <Sidebar onClick={getPublisherInfo} />
-            <Grid container spacing={10} className={classes.inside}>
-              <Grid item xs={12} lg={6}>
-                <Chart data={publisherData} />
-              </Grid>
-              <Grid item xs={12} lg={6}>
-                {whichList === true ? (
-                  <GameAxios data={publisherData} />
-                ) : (
-                  <NewsLarge data={publisherData} />
-                )}
-              </Grid>
-              <Grid item xs={6} lg={3} />
-              <Grid item xs={12} lg={3}>
-                <NewsSmall onClick={expandNews} data={publisherData} />
-              </Grid>
-              <Grid item xs={12} lg={3}>
-                <GameSmall onClick={expandGames} data={publisherData} />
-              </Grid>
-              <Grid item xs={12} lg={3} />            
-              <Grid item xs={12} lg={3} />
-              <Grid item className={classes.paper} xs={12} lg={6}>
-                <Poll isButtonClicked={isButtonClicked} yes={totalYesCount} no={totalNoCount} onClick={setVote}/>
-              </Grid>
-            </Grid>
-          </Grid>
-        </div>
-      </div>
-    </div>
+      <React.Fragment>
+        <Sidebar onClick={getPublisherInfo} />
+          <div className={classes.image}>
+                <div className="app">
+                  <div className={classes.root}>
+                    <Grid container spacing={0}>
+                      <Grid container spacing={10} className={classes.inside}>
+                        <Grid item xs={12} lg={6}>
+                          <Chart data={publisherData} />
+                        </Grid>
+                        <Grid item xs={12} lg={6}>
+                          {whichList === true ? (
+                            <GameAxios data={publisherData} />
+                          ) : (
+                            <NewsLarge data={publisherData} />
+                          )}
+                        </Grid>
+                        <Grid item xs={6} lg={3} />
+                        <Grid item xs={12} lg={3}>
+                          <NewsSmall onClick={expandNews} data={publisherData} />
+                        </Grid>
+                        <Grid item xs={12} lg={3}>
+                          <GameSmall onClick={expandGames} data={publisherData} />
+                        </Grid>
+                        <Grid item xs={12} lg={3} />            
+                        <Grid item xs={12} lg={3} />
+                        <Grid item className={classes.paper} xs={12} lg={6}>
+                          <Poll isButtonClicked={isButtonClicked} yes={totalYesCount} no={totalNoCount} onClick={setVote}/>
+                        </Grid>
+                      </Grid>
+                    </Grid>
+                  </div>
+                </div>
+              </div>
+      </React.Fragment>
+    
     );
   } else {
     // ---------------Conditional Render for either landing page or main content---------------------
     return (
-    <div className={classes.image}>
-      <div className="app">
-        <div className={classes.root}>
-          <Grid container spacing={10}>
-            <Sidebar onClick={getPublisherInfo} />
-            <Grid container spacing={10} className={classes.inside}>
-              <Grid item lg={3} />
-              <Grid item className={classes.paper} xs={12} lg={6}>
-                <LandingPage onClick={getStarted} />
-              </Grid>
-            </Grid>
-          </Grid>
-        </div>
-      </div>
-    </div>
+      <React.Fragment>
+        <Sidebar onClick={getPublisherInfo} />
+          <div className={classes.image}>
+            <div className="app">
+              <div className={classes.root}>
+                <Grid container spacing={0}>
+                  
+                  <Grid container spacing={10} className={classes.inside}>
+                    <Grid item lg={3} />
+                    <Grid item className={classes.paper} xs={12} lg={6}>
+                      <LandingPage onClick={getStarted} />
+                    </Grid>
+                    <Grid item lg={3} />
+                    <Grid item lg={3} />
+                    <Grid item lg={3} />
+                  </Grid>
+                </Grid>
+              </div>
+            </div>
+          </div>
+
+      </React.Fragment>
+
     );
   }
 }

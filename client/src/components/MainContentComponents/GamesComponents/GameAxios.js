@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import moment from "moment";
+import Paper from '@material-ui/core/Paper';
+import Spinner from "../../../src_images/Spinner.gif"
 import GameLarge from "./GameLarge";
 
 class GameAxios extends Component {
@@ -56,11 +58,21 @@ class GameAxios extends Component {
   }
 
   render() {
-    return (
+    if (this.state.gamesList.length < 1) {
+      return (
+        <div>
+          <Paper>
+            <img src={Spinner}></img>
+          </Paper>
+        </div>
+      );
+    } else{
+      return (
       <div>
         <GameLarge data={this.state.gamesList} />
       </div>
     );
+    }
   }
 }
 export default GameAxios;
