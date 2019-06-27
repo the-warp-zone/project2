@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 import axios from "axios";
+// import CircularProgress from '@material-ui/core/CircularProgress';
+// import { makeStyles } from '@material-ui/core/styles';
 import NewsList from "./NewsList";
+
+// const useStyles = makeStyles(theme => ({
+//   progress: {
+//     margin: theme.spacing(2),
+//   },
+// }));
 
 class NewsLarge extends Component {
   state = {
@@ -61,8 +69,10 @@ class NewsLarge extends Component {
   }
 
   render() {
+    // const classes = useStyles();
     return (
       <div>
+        {/* <CircularProgress className={classes.progress} /> */}
         <NewsList data={this.state.newsList} />
       </div>
     );

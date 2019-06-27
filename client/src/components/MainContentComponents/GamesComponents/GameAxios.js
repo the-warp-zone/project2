@@ -1,8 +1,15 @@
 import React, { Component } from "react";
 import axios from "axios";
 import moment from "moment";
+// import CircularProgress from '@material-ui/core/CircularProgress';
+// import { makeStyles } from '@material-ui/core/styles';
 import GameLarge from "./GameLarge";
 
+// const useStyles = makeStyles(theme => ({
+//   progress: {
+//     margin: theme.spacing(2),
+//   },
+// }));
 class GameAxios extends Component {
   state = {
     gamesList: []
@@ -56,8 +63,10 @@ class GameAxios extends Component {
   }
 
   render() {
+    // const classes = useStyles();
     return (
       <div>
+        {/* <CircularProgress className={classes.progress} /> */}
         <GameLarge data={this.state.gamesList} />
       </div>
     );

@@ -19,8 +19,14 @@ const useStyles = makeStyles(theme => ({
   image: {
     backgroundImage: `url(${Image})`,
     backgroundRepeat: "repeat",
-    height: "100%",
-    flexGrow: 1
+    paddingTop: "2%"
+  },
+  landing: {
+    backgroundImage: `url(${Image})`,
+    backgroundRepeat: "repeat",
+    paddingTop: "5%",
+    paddingBottom: "15%"
+    
   },
   root: {
     flexGrow: 1
@@ -141,7 +147,7 @@ function AppLoader() {
     <div className={classes.image}>
       <div className="app">
         <div className={classes.root}>
-          <Grid container spacing={10}>
+          <Grid container spacing={0}>
             <Sidebar onClick={getPublisherInfo} />
             <Grid container spacing={10} className={classes.inside}>
               <Grid item xs={12} lg={6}>
@@ -175,16 +181,19 @@ function AppLoader() {
   } else {
     // ---------------Conditional Render for either landing page or main content---------------------
     return (
-    <div className={classes.image}>
+    <div className={classes.landing}>
       <div className="app">
         <div className={classes.root}>
-          <Grid container spacing={10}>
+          <Grid container spacing={0}>
             <Sidebar onClick={getPublisherInfo} />
-            <Grid container spacing={10} className={classes.inside}>
+            <Grid container spacing={50} className={classes.inside}>
               <Grid item lg={3} />
               <Grid item className={classes.paper} xs={12} lg={6}>
                 <LandingPage onClick={getStarted} />
               </Grid>
+              <Grid item lg={3} />
+              <Grid item lg={3} />
+              <Grid item lg={3} />
             </Grid>
           </Grid>
         </div>
