@@ -5,7 +5,6 @@ import { withStyles } from "@material-ui/core/styles";
 import TableCell from "@material-ui/core/TableCell";
 import Paper from "@material-ui/core/Paper";
 import { AutoSizer, Column, Table } from "react-virtualized";
-import Button from "@material-ui/core/Button";
 
 const styles = theme => ({
   flexContainer: {
@@ -35,13 +34,11 @@ const styles = theme => ({
 class MuiVirtualizedTable extends React.PureComponent {
   static defaultProps = {
     headerHeight: 48,
-    rowHeight: 65
+    rowHeight: 85
   };
 
   getRowClassName = ({ index }) => {
     const { classes, onRowClick } = this.props;
-    // console.log(this.props.classes);
-
     return clsx(classes.tableRow, classes.flexContainer, {
       [classes.tableRowHover]: index !== -1 && onRowClick != null
     });
@@ -144,20 +141,12 @@ const ReactVirtualizedTable = ({ data }) => {
   for (let i = 0; i < gameList.length; i += 1) {
     rows.push(createData(i, gameList[i][0], gameList[i][1]));
   }
-  const bStyle = {
-    marginRight: "1%",
-    marginTop: "1%",
-    float: "right",
-    background: "linear-gradient(45deg, #0a9df1 , #62058d )",
-    color: "white"
-  };
   return (
     <Paper
       style={{
         height: 400,
         width: "100%",
         boxShadow: "0px 0px 8px 0px rgba(0,0,0,0.65)"
-        // background: 'linear-gradient(45deg, #0a9df1, #62058d)',
       }}
     >
       <VirtualizedTable
