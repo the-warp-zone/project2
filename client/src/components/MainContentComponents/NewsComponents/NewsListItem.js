@@ -21,7 +21,7 @@ var NewsItem = props => {
           <Avatar alt="image" src={props.data.image.thumbnail} />
         </ListItemAvatar>
         <ListItemText
-          primary={<a href={props.data.url}>{StrippedTitle}</a>} //primary text
+          primary={<a href={props.data.url} target="_blank" >{StrippedTitle}</a>} //primary text
           secondary={
             <React.Fragment>
               <Typography
